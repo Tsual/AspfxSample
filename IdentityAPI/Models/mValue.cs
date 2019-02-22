@@ -16,9 +16,23 @@ namespace IdentityAPI.Models
         public string Value { get; set; }
 
 
-        public static implicit operator KeyValuePair<string, string>()
+        public static implicit operator KeyValuePair<string, string>(mValue value)
         {
+            return new KeyValuePair<string, string>(value.Key, value.Value);
+        }
 
+        public static implicit operator mValue(KeyValuePair<string, string> keyValue)
+        {
+            return new mValue()
+            {
+                Key = keyValue.Key,
+                Value = keyValue.Value
+            };
+        }
+
+        public override string ToString()
+        {
+            return "{" + Key + "," + Value + "}";
         }
     }
 }

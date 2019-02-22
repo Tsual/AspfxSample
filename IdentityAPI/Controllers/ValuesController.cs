@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityAPI.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using IdentityAPI.Data;
+using IdentityAPI.Models;
 using Microsoft.Extensions.Logging;
 
 namespace IdentityAPI.Controllers
@@ -12,46 +15,121 @@ namespace IdentityAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly SqliteContext dbContext;
-        private readonly ILogger logger;
+        private readonly SqliteContext _context;
+        private readonly ILogger _logger;
 
-        public ValuesController(SqliteContext dbContext, ILogger logger)
+        public ValuesController(SqliteContext context, ILogger logger)
         {
-            this.dbContext = dbContext;
-            this.logger = logger;
+            _context = context;
+            _logger = logger;
         }
 
-        // GET api/values
+        // GET: api/Values
         [HttpGet]
-        public ActionResult<IEnumerable<KeyValuePair<string,string>>> Get()
+        public IEnumerable<mValue> GetsValue()
         {
-            logger.LogTrace("GET<<VALUE<<TAKE20");
-            return dbContext.sValue.Take(20).ToArray();
+            _logger.LogTrace("GET<<VALUE<<TAKE20");
+            return _context.sValue.Take(20);
         }
 
-        // GET api/values/5
+        // GET: api/Values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public async Task<IActionResult> GetmValue([FromRoute] string id)
         {
-            return "value";
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _logger.LogTrace("GET<<KEY<<" + id);
+            var mValue = await _context.sValue.FindAsync(id);
+
+            if (mValue == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(mValue);
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
+        // PUT: api/Values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> PutmValue([FromRoute] string id, [FromBody] mValue mValue)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _logger.LogTrace("PUT<<KEY<<" + id + "<<VALUE" + mValue.Value);
+
+            if (id != mValue.Key)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(mValue).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!mValueExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // POST: api/Values
+        [HttpPost]
+        public async Task<IActionResult> PostmValue([FromBody] mValue mValue)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _logger.LogTrace("POST<<" + mValue.Key + "VALUE<<" + mValue.Value);
+            _context.sValue.Add(mValue);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetmValue", new { id = mValue.Key }, mValue);
+        }
+
+        // DELETE: api/Values/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletemValue([FromRoute] string id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _logger.LogTrace("DELETE<<KEY<<" + id);
+            var mValue = await _context.sValue.FindAsync(id);
+            if (mValue == null)
+            {
+                return NotFound();
+            }
+
+            _context.sValue.Remove(mValue);
+            await _context.SaveChangesAsync();
+
+            return Ok(mValue);
+        }
+
+        private bool mValueExists(string id)
+        {
+            return _context.sValue.Any(e => e.Key == id);
         }
     }
 }
