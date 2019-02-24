@@ -20,7 +20,7 @@
     "Identity": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/values/init",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

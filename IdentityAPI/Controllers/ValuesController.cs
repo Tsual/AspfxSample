@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using IdentityAPI.Data;
 using IdentityAPI.Models;
 using Microsoft.Extensions.Logging;
+using System.Text;
+using Helper;
 
 namespace IdentityAPI.Controllers
 {
@@ -16,11 +18,12 @@ namespace IdentityAPI.Controllers
     public class ValuesController : ControllerBase
     {
         private readonly SqliteContext _context;
-        private readonly ILogger _logger;
+        private readonly ILogger<ValuesController> _logger;
 
-        public ValuesController(SqliteContext context, ILogger logger)
+        public ValuesController(SqliteContext context, ILogger<ValuesController> logger)
         {
             _context = context;
+            _context.Database.EnsureCreated();
             _logger = logger;
         }
 
@@ -30,6 +33,29 @@ namespace IdentityAPI.Controllers
         {
             _logger.LogTrace("GET<<VALUE<<TAKE20");
             return _context.sValue.Take(20);
+        }
+
+        [HttpGet("init")]
+        public IActionResult Init()
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _logger.LogTrace("GET<<INIT");
+            var value_count = _context.sValue.Count();
+            if (value_count < 1000)
+            {
+                for (int i = 1000 - value_count; i > 0; i--)
+                {
+                    string key = RandomString.ef16(16);
+                    while (_context.sValue.Find(key) != null) key = RandomString.ef16(16);
+                    _context.sValue.Add(new mValue() { Key = key, Value = RandomString.ef16(64) });
+                }
+                _context.SaveChanges();
+            }
+            return Ok();
         }
 
         // GET: api/Values/5

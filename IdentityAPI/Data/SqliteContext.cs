@@ -12,9 +12,11 @@ namespace IdentityAPI.Data
         public DbSet<mUser> sUser { get; set; }
         public DbSet<mValue> sValue { get; set; }
 
+        public const string ConnectUri = "DataSource=sqlite0.db";
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("DataSource=sqlite0.db");
+            optionsBuilder.UseSqlite(ConnectUri);
         }
     }
 }
