@@ -35,29 +35,6 @@ namespace IdentityAPI.Controllers
             return _context.sValue.Take(20);
         }
 
-        [HttpGet("init")]
-        public async Task<IActionResult> InitAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _logger.LogTrace("GET<<INIT");
-            var value_count = _context.sValue.Count();
-            if (value_count < 1000)
-            {
-                for (int i = 1000 - value_count; i > 0; i--)
-                {
-                    string key = RandomString.ef16(16);
-                    while (_context.sValue.Find(key) != null) key = RandomString.ef16(16);
-                    await _context.sValue.AddAsync(new mValue() { Key = key, Value = RandomString.ef16(64) });
-                }
-                _context.SaveChangesAsync();
-            }
-            return Ok();
-        }
-
         // GET: api/Values/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetmValue([FromRoute] string id)

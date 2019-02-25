@@ -16,6 +16,7 @@ namespace IdentityAPI.Data
         {
             _config = config;
         }
+
         public DbSet<mUser> sUser { get; set; }
         public DbSet<mValue> sValue { get; set; }
 
