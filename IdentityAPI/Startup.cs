@@ -13,6 +13,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Caching.Distributed;
 using StackExchange.Redis;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Helper;
+using IdentityAPI.Core;
 
 namespace IdentityAPI
 {
@@ -37,7 +42,45 @@ namespace IdentityAPI
             //    arg.InstanceName = Configuration["redis:instance_name"];
             //});
             services.AddResponseCaching();
-            services.Add(new ServiceDescriptor(typeof(IConnectionMultiplexer), factory: (sp) => ConnectionMultiplexer.Connect(Configuration["redis:connect_string"]), lifetime: ServiceLifetime.Singleton));
+            services.Add(new ServiceDescriptor(typeof(IConnectionMultiplexer), factory: (sp) => RedisCache.Instance[Configuration["redis:connect_string"]], lifetime: ServiceLifetime.Singleton));
+            services.AddAuthentication(arg =>
+            {
+                arg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(arg =>
+            {
+                
+                arg.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = JwtCore.SecretKey,
+
+                    ValidateIssuer = true,
+                    ValidIssuer = Configuration["jwt:Issuer"],
+
+                    ValidateAudience = true,
+                    //ValidAudience = JwtSetting.Audience,
+
+                    // Validate the token expiry
+                    ValidateLifetime = true,
+
+                    // If you want to allow a certain amount of clock drift, set that here:
+                    ClockSkew = TimeSpan.Zero,
+
+                    AudienceValidator = (aud, key, token) =>
+                   {
+                       bool res = true;
+                       foreach (var aud_t in aud)
+                           res &= JwtCore.Check(RedisCache.Instance[Configuration["redis:connect_string"]].GetDatabase(), aud_t);
+                       return res;
+                   },
+
+                    //IssuerValidator = (iss, key, token) =>
+                    //  {
+                    //      return "";
+                    //  },
+                };
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

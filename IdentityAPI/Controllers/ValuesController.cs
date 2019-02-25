@@ -11,11 +11,14 @@ using Microsoft.Extensions.Logging;
 using System.Text;
 using Helper;
 using StackExchange.Redis;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace IdentityAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ValuesController : ControllerBase
     {
         private readonly SqliteContext _context;
@@ -106,7 +109,7 @@ namespace IdentityAPI.Controllers
 
             _logger.LogTrace("POST<<" + mValue.Key + "VALUE<<" + mValue.Value);
             _context.sValue.Add(mValue);
-            await _context.SaveChangesAsync().ContinueWith(t=> _connectionMultiplexer.GetDatabase().StringSetAsync(mValue.RedisKey,mValue.Value));
+            await _context.SaveChangesAsync().ContinueWith(t => _connectionMultiplexer.GetDatabase().StringSetAsync(mValue.RedisKey, mValue.Value));
 
             return CreatedAtAction("GetmValue", new { id = mValue.Key }, mValue);
         }
@@ -128,7 +131,7 @@ namespace IdentityAPI.Controllers
             }
 
             _context.sValue.Remove(mValue);
-            await _context.SaveChangesAsync().ContinueWith(t=> _connectionMultiplexer.GetDatabase().StringDecrement(mValue.RedisKey));
+            await _context.SaveChangesAsync().ContinueWith(t => _connectionMultiplexer.GetDatabase().StringDecrement(mValue.RedisKey));
 
             return Ok(mValue);
         }

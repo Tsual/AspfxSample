@@ -1,9 +1,11 @@
 ﻿using Helper;
+using IdentityAPI.Core;
 using IdentityAPI.Data;
 using IdentityAPI.Models;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Redis;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,7 @@ namespace IdentityAPI
     {
         public static void DoWork(IConfiguration configuration)
         {
+            JwtCore.SecretKey = new SymmetricSecurityKey(Byte16String.Decode(configuration["jwt:SecretKey"]));
             SqliteContext _context = new SqliteContext(configuration);
             DbWarmUpAsync(_context).Wait();
             RedisWarmUp(configuration, _context);
@@ -30,9 +33,9 @@ namespace IdentityAPI
             {
                 Parallel.For(1000 - value_count, 999, async i =>
                 {
-                    string key = RandomString.ef16(16);
-                    while (_context.sValue.Find(key) != null) key = RandomString.ef16(16);
-                    await _context.sValue.AddAsync(new mValue() { Key = key, Value = RandomString.ef16(64) });
+                    string key = Byte16String.RandomString(16);
+                    while (_context.sValue.Find(key) != null) key = Byte16String.RandomString(16);
+                    await _context.sValue.AddAsync(new mValue() { Key = key, Value = Byte16String.RandomString(64) });
                 });
                 await _context.SaveChangesAsync();
             }
@@ -43,7 +46,7 @@ namespace IdentityAPI
             SqliteContext _context
             )
         {
-            var redis = ConnectionMultiplexer.Connect(configuration["redis:connect_string"]).GetDatabase();
+            var redis = Data.RedisCache.Instance[configuration["redis:connect_string"]].GetDatabase();
             var par_result = Parallel.ForEach(_context.sValue, async db_pair =>
                {
                    var pair_key = "VALUE_" + db_pair.Key;

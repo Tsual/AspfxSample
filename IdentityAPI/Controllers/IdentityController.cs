@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityAPI.Core;
 using IdentityAPI.Data;
 using IdentityAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using StackExchange.Redis;
 
 namespace IdentityAPI.Controllers
 {
@@ -16,12 +19,15 @@ namespace IdentityAPI.Controllers
     {
         private readonly SqliteContext _context;
         private readonly ILogger<IdentityController> _logger;
+        private readonly IConnectionMultiplexer _connectionMultiplexer;
+        private readonly IConfiguration _configuration;
 
-        public IdentityController(SqliteContext context, ILogger<IdentityController> logger)
+        public IdentityController(SqliteContext context, ILogger<IdentityController> logger, IConnectionMultiplexer connectionMultiplexer, IConfiguration configuration)
         {
             _context = context;
-            _context.Database.EnsureCreated();
             _logger = logger;
+            _connectionMultiplexer = connectionMultiplexer;
+            _configuration = configuration;
         }
 
         [HttpPost("verify")]
@@ -44,9 +50,10 @@ namespace IdentityAPI.Controllers
             var query_list = query_result.Take(1).ToList();
             if (query_list.Count < 1) return NotFound();
 
-            if (query_list[0].Password == model.Password) return Ok();
+            if (query_list[0].Password == model.Password)
+                return Ok(new { Jwt = JwtCore.Regist(_connectionMultiplexer.GetDatabase(), query_list[0].ID.ToString(), _configuration["jwt:Issuer"], int.Parse(_configuration["jwt:Overtime"])) });
 
-            return BadRequest();
+            return BadRequest("User Not Found");
         }
 
         [HttpPost("regist")]
@@ -56,7 +63,7 @@ namespace IdentityAPI.Controllers
                 return BadRequest(ModelState);
 
             if (string.IsNullOrWhiteSpace(model.Password))
-                return BadRequest();
+                return BadRequest("Password Empty");
 
             var query_result = from t in _context.sUser select t;
             if (!string.IsNullOrWhiteSpace(model.LoginId))
@@ -67,17 +74,18 @@ namespace IdentityAPI.Controllers
                 query_result = query_result.Where(t => t.Email == model.Email);
 
             var query_list = query_result.Take(1).ToList();
-            if (query_list.Count > 0) return BadRequest();
+            if (query_list.Count > 0) return BadRequest("User Already Exist");
 
-            _context.Entry(new mUser()
+            var user = new mUser()
             {
                 Email = model.Email,
                 LoginId = model.LoginId,
                 Password = model.Password,
                 PhoneNumber = model.PhoneNumber
-            }).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+            };
+            _context.sUser.Attach(user);
             await _context.SaveChangesAsync();
-            return Ok();
+            return Ok(new { Jwt = JwtCore.Regist(_connectionMultiplexer.GetDatabase(), user.ID.ToString(), _configuration["jwt:Issuer"], int.Parse(_configuration["jwt:Overtime"])) });
         }
     }
 
