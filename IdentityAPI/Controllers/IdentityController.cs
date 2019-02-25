@@ -46,9 +46,10 @@ namespace IdentityAPI.Controllers
 
             if (query_list[0].Password == model.Password) return Ok();
 
-            return Forbid();
+            return BadRequest();
         }
 
+        [HttpPost("regist")]
         public async Task<IActionResult> RegistAsync([FromBody]IdentityModel model)
         {
             if (!ModelState.IsValid)
@@ -66,7 +67,7 @@ namespace IdentityAPI.Controllers
                 query_result = query_result.Where(t => t.Email == model.Email);
 
             var query_list = query_result.Take(1).ToList();
-            if (query_list.Count > 0) return Forbid();
+            if (query_list.Count > 0) return BadRequest();
 
             _context.Entry(new mUser()
             {
