@@ -31,16 +31,17 @@ namespace IdentityAPI
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<SqliteContext>();
             services.AddLogging();
-            services.AddDistributedRedisCache(arg =>
-            {
-                arg.Configuration = Configuration["redis:connnect_string"];
-                arg.InstanceName = Configuration["redis:instance_name"];
-            });
+            //services.AddDistributedRedisCache(arg =>
+            //{
+            //    arg.Configuration = Configuration["redis:connnect_string"];
+            //    arg.InstanceName = Configuration["redis:instance_name"];
+            //});
+            services.AddResponseCaching();
             services.Add(new ServiceDescriptor(typeof(IConnectionMultiplexer), factory: (sp) => ConnectionMultiplexer.Connect(Configuration["redis:connect_string"]), lifetime: ServiceLifetime.Singleton));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime appLifetime, SqliteContext sqliteContext, IDistributedCache distributedCache)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime appLifetime)
         {
             if (env.IsDevelopment())
             {
@@ -53,9 +54,8 @@ namespace IdentityAPI
             });
 
 
+            app.UseResponseCaching();
             app.UseMvc();
-
-
         }
 
 

@@ -10,6 +10,7 @@ using IdentityAPI.Models;
 using Microsoft.Extensions.Logging;
 using System.Text;
 using Helper;
+using StackExchange.Redis;
 
 namespace IdentityAPI.Controllers
 {
@@ -19,12 +20,14 @@ namespace IdentityAPI.Controllers
     {
         private readonly SqliteContext _context;
         private readonly ILogger<ValuesController> _logger;
+        private readonly IConnectionMultiplexer _connectionMultiplexer;
 
-        public ValuesController(SqliteContext context, ILogger<ValuesController> logger)
+        public ValuesController(SqliteContext context, ILogger<ValuesController> logger, IConnectionMultiplexer connectionMultiplexer)
         {
             _context = context;
             _context.Database.EnsureCreated();
             _logger = logger;
+            _connectionMultiplexer = connectionMultiplexer;
         }
 
         // GET: api/Values
@@ -45,7 +48,7 @@ namespace IdentityAPI.Controllers
             }
 
             _logger.LogTrace("GET<<KEY<<" + id);
-            var mValue = await _context.sValue.FindAsync(id);
+            var mValue = (await _connectionMultiplexer.GetDatabase().StringGetAsync("VALUE_" + id)).ToString();
 
             if (mValue == null)
             {
@@ -75,7 +78,7 @@ namespace IdentityAPI.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync().ContinueWith((a) => _connectionMultiplexer.GetDatabase().StringSetAsync(mValue.RedisKey, mValue.Value));
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -103,7 +106,7 @@ namespace IdentityAPI.Controllers
 
             _logger.LogTrace("POST<<" + mValue.Key + "VALUE<<" + mValue.Value);
             _context.sValue.Add(mValue);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ContinueWith(t=> _connectionMultiplexer.GetDatabase().StringSetAsync(mValue.RedisKey,mValue.Value));
 
             return CreatedAtAction("GetmValue", new { id = mValue.Key }, mValue);
         }
@@ -125,7 +128,7 @@ namespace IdentityAPI.Controllers
             }
 
             _context.sValue.Remove(mValue);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync().ContinueWith(t=> _connectionMultiplexer.GetDatabase().StringDecrement(mValue.RedisKey));
 
             return Ok(mValue);
         }

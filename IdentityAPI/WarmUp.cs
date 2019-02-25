@@ -28,12 +28,12 @@ namespace IdentityAPI
             var value_count = _context.sValue.Count();
             if (value_count < 1000)
             {
-                for (int i = 1000 - value_count; i > 0; i--)
+                Parallel.For(1000 - value_count, 999, async i =>
                 {
                     string key = RandomString.ef16(16);
                     while (_context.sValue.Find(key) != null) key = RandomString.ef16(16);
                     await _context.sValue.AddAsync(new mValue() { Key = key, Value = RandomString.ef16(64) });
-                }
+                });
                 await _context.SaveChangesAsync();
             }
         }

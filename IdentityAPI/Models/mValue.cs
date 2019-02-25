@@ -34,5 +34,7 @@ namespace IdentityAPI.Models
         {
             return "{" + Key + "," + Value + "}";
         }
+
+        public string RedisKey { get => "VALUE_" + Key; }
     }
 }
