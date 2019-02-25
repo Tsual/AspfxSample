@@ -36,7 +36,7 @@ namespace IdentityAPI.Controllers
         }
 
         [HttpGet("init")]
-        public IActionResult Init()
+        public async Task<IActionResult> InitAsync()
         {
             if (!ModelState.IsValid)
             {
@@ -51,9 +51,9 @@ namespace IdentityAPI.Controllers
                 {
                     string key = RandomString.ef16(16);
                     while (_context.sValue.Find(key) != null) key = RandomString.ef16(16);
-                    _context.sValue.Add(new mValue() { Key = key, Value = RandomString.ef16(64) });
+                    await _context.sValue.AddAsync(new mValue() { Key = key, Value = RandomString.ef16(64) });
                 }
-                _context.SaveChanges();
+                _context.SaveChangesAsync();
             }
             return Ok();
         }
