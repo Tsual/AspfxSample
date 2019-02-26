@@ -18,8 +18,8 @@ namespace IdentityAPI.Controllers
         {
             this.logger = logger;
         }
-        [HttpGet]
-        public IActionResult DevTest()
+        [HttpGet("LogServices")]
+        public IActionResult LogServices()
         {
             logger.LogDebug(ServiceHelper.DiInfoToJson());
             return Ok();
