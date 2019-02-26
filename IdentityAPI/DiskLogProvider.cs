@@ -11,7 +11,6 @@ namespace IdentityAPI
     public class DiskLogProvider : ILoggerProvider
     {
         internal TextWriter textWriter;
-        private readonly Timer timer;
         public DiskLogProvider()
         {
             var log_dir = new DirectoryInfo("log");
@@ -20,7 +19,6 @@ namespace IdentityAPI
             while (File.Exists(NewPath(log_name)))
                 log_name = NewName();
             textWriter = new FileInfo(NewPath(log_name)).CreateText();
-            timer = new Timer(t => { textWriter.Flush(); }, null, 0, 500);
         }
 
         public ILogger CreateLogger(string categoryName)
@@ -63,6 +61,7 @@ namespace IdentityAPI
                 p.textWriter.WriteLine(
                     "[" + DateTime.Now.ToString() + "] [" + eventId + "] (" + categoryName + ") " + logLevel + " " + formatter?.Invoke(state, exception)
                     );
+                p.textWriter.Flush();
             }
         }
     }

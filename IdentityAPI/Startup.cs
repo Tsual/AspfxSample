@@ -128,16 +128,15 @@ namespace IdentityAPI
 
             if (HostingEnvironment.IsDevelopment())
             {
-                var keyValuePairs = new List<Dictionary<string, string>>();
                 foreach (var sv in services)
-                    keyValuePairs.Add(new Dictionary<string, string>() {
+                    ServiceHelper.DiInfo.Add(new Dictionary<string, string>() {
                         {"Factory",sv.ImplementationFactory?.ToString() },
                         {"ImplIns",sv.ImplementationInstance?.ToString() },
                         {"ImplType",sv.ImplementationType?.ToString() },
                         {"Isv",sv.ServiceType?.ToString() },
                         {"LifeTime",sv.Lifetime.ToString() },
                     });
-                Logger.LogDebug("Final DI Container:" + JsonConvert.SerializeObject(keyValuePairs));
+                Logger.LogDebug("Final DI Container:" + ServiceHelper.DiInfoToJson());
             }
         }
 

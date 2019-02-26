@@ -1,0 +1,1983 @@
+[
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.AspNetCore.Hosting.Internal.WebHostOptions",
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Hosting.Internal.WebHostOptions",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.AspNetCore.Hosting.Internal.HostingEnvironment",
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Hosting.IHostingEnvironment",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.AspNetCore.Hosting.Internal.HostingEnvironment",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Hosting.IHostingEnvironment",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.AspNetCore.Hosting.WebHostBuilderContext",
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Hosting.WebHostBuilderContext",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Configuration.ConfigurationRoot",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Configuration.IConfiguration",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Hosting.Builder.ApplicationBuilderFactory",
+        "Isv": "Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Http.HttpContextFactory",
+        "Isv": "Microsoft.AspNetCore.Http.IHttpContextFactory",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Http.MiddlewareFactory",
+        "Isv": "Microsoft.AspNetCore.Http.IMiddlewareFactory",
+        "LifeTime": "Scoped"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Options.OptionsManager`1[TOptions]",
+        "Isv": "Microsoft.Extensions.Options.IOptions`1[TOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Options.OptionsManager`1[TOptions]",
+        "Isv": "Microsoft.Extensions.Options.IOptionsSnapshot`1[TOptions]",
+        "LifeTime": "Scoped"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Options.OptionsMonitor`1[TOptions]",
+        "Isv": "Microsoft.Extensions.Options.IOptionsMonitor`1[TOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Options.OptionsFactory`1[TOptions]",
+        "Isv": "Microsoft.Extensions.Options.IOptionsFactory`1[TOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Options.OptionsCache`1[TOptions]",
+        "Isv": "Microsoft.Extensions.Options.IOptionsMonitorCache`1[TOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Logging.LoggerFactory",
+        "Isv": "Microsoft.Extensions.Logging.ILoggerFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Logging.Logger`1[T]",
+        "Isv": "Microsoft.Extensions.Logging.ILogger`1[TCategoryName]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Logging.DefaultLoggerLevelConfigureOptions",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.Extensions.Logging.LoggerFilterOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter",
+        "Isv": "Microsoft.AspNetCore.Hosting.IStartupFilter",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.ObjectPool.DefaultObjectPoolProvider",
+        "Isv": "Microsoft.Extensions.ObjectPool.ObjectPoolProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory",
+        "Isv": "Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.Internal.ITransportFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Server.Kestrel.Core.Internal.KestrelServerOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer",
+        "Isv": "Microsoft.AspNetCore.Hosting.Server.IServer",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Options.ConfigureNamedOptions`1[Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions]",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Logging.Configuration.LoggerProviderConfigurationFactory",
+        "Isv": "Microsoft.Extensions.Logging.Configuration.ILoggerProviderConfigurationFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Logging.Configuration.LoggerProviderConfiguration`1[T]",
+        "Isv": "Microsoft.Extensions.Logging.Configuration.ILoggerProviderConfiguration`1[T]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Logging.LoggerFilterConfigureOptions",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.Extensions.Logging.LoggerFilterOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Options.ConfigurationChangeTokenSource`1[Microsoft.Extensions.Logging.LoggerFilterOptions]",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Options.IOptionsChangeTokenSource`1[Microsoft.Extensions.Logging.LoggerFilterOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Logging.Configuration.LoggingConfiguration",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Logging.Configuration.LoggingConfiguration",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Logging.Console.ConsoleLoggerProvider",
+        "Isv": "Microsoft.Extensions.Logging.ILoggerProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Logging.Console.ConsoleLoggerOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.Extensions.Logging.Console.ConsoleLoggerOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Logging.Configuration.LoggerProviderOptionsChangeTokenSource`2[Microsoft.Extensions.Logging.Console.ConsoleLoggerOptions,Microsoft.Extensions.Logging.Console.ConsoleLoggerProvider]",
+        "Isv": "Microsoft.Extensions.Options.IOptionsChangeTokenSource`1[Microsoft.Extensions.Logging.Console.ConsoleLoggerOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Logging.Debug.DebugLoggerProvider",
+        "Isv": "Microsoft.Extensions.Logging.ILoggerProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Options.PostConfigureOptions`1[Microsoft.AspNetCore.HostFiltering.HostFilteringOptions]",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Options.IPostConfigureOptions`1[Microsoft.AspNetCore.HostFiltering.HostFilteringOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Options.ConfigurationChangeTokenSource`1[Microsoft.AspNetCore.HostFiltering.HostFilteringOptions]",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Options.IOptionsChangeTokenSource`1[Microsoft.AspNetCore.HostFiltering.HostFilteringOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.HostFilteringStartupFilter",
+        "Isv": "Microsoft.AspNetCore.Hosting.IStartupFilter",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.DependencyInjection.IServiceProviderFactory`1[Microsoft.Extensions.DependencyInjection.IServiceCollection]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,System.Object]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Hosting.IStartup",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.AspNetCore",
+        "ImplType": null,
+        "Isv": "System.Diagnostics.DiagnosticListener",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.AspNetCore",
+        "ImplType": null,
+        "Isv": "System.Diagnostics.DiagnosticSource",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Hosting.Internal.ApplicationLifetime",
+        "Isv": "Microsoft.AspNetCore.Hosting.IApplicationLifetime",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.Extensions.Hosting.IApplicationLifetime]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Hosting.IApplicationLifetime",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Hosting.Internal.HostedServiceExecutor",
+        "Isv": "Microsoft.AspNetCore.Hosting.Internal.HostedServiceExecutor",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartManager",
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartManager",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Routing.DefaultInlineConstraintResolver",
+        "Isv": "Microsoft.AspNetCore.Routing.IInlineConstraintResolver",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.Extensions.ObjectPool.ObjectPool`1[Microsoft.AspNetCore.Routing.Internal.UriBuildingContext]]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.ObjectPool.ObjectPool`1[Microsoft.AspNetCore.Routing.Internal.UriBuildingContext]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.AspNetCore.Routing.Tree.TreeRouteBuilder]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Routing.Tree.TreeRouteBuilder",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Routing.Internal.RoutingMarkerService",
+        "Isv": "Microsoft.AspNetCore.Routing.Internal.RoutingMarkerService",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.MvcCoreMvcOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Mvc.MvcOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.MvcOptionsConfigureCompatibilityOptions",
+        "Isv": "Microsoft.Extensions.Options.IPostConfigureOptions`1[Microsoft.AspNetCore.Mvc.MvcOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.ApiBehaviorOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Mvc.ApiBehaviorOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.MvcCoreRouteOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Routing.RouteOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.DefaultApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IApplicationModelProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.ApiBehaviorApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IApplicationModelProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.ControllerActionDescriptorProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Abstractions.IActionDescriptorProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.ActionDescriptorCollectionProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionDescriptorCollectionProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.ActionSelector",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionSelector",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.ActionConstraintCache",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.ActionConstraintCache",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.DefaultActionConstraintProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraintProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Controllers.DefaultControllerFactory",
+        "Isv": "Microsoft.AspNetCore.Mvc.Controllers.IControllerFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Controllers.DefaultControllerActivator",
+        "Isv": "Microsoft.AspNetCore.Mvc.Controllers.IControllerActivator",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Controllers.IControllerFactoryProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Controllers.IControllerActivatorProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.DefaultControllerPropertyActivator",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.IControllerPropertyActivator",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.ActionInvokerFactory",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionInvokerFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvokerProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Abstractions.IActionInvokerProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvokerCache",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvokerCache",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.DefaultFilterProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Filters.IFilterProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.ActionResultTypeMapper",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultTypeMapper",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.RequestSizeLimitFilter",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.RequestSizeLimitFilter",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.DisableRequestSizeLimitFilter",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.DisableRequestSizeLimitFilter",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.RequestFormLimitsFilter",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.RequestFormLimitsFilter",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DefaultModelMetadataProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ModelBinding.IModelMetadataProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ICompositeMetadataDetailsProvider]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ICompositeMetadataDetailsProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory",
+        "Isv": "Microsoft.AspNetCore.Mvc.ModelBinding.IModelBinderFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.AspNetCore.Mvc.ModelBinding.Validation.IObjectModelValidator]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Mvc.ModelBinding.Validation.IObjectModelValidator",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.ClientValidatorCache",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.ClientValidatorCache",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder",
+        "Isv": "Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.MvcMarkerService",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.MvcMarkerService",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.TypeActivatorCache",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.ITypeActivatorCache",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Routing.UrlHelperFactory",
+        "Isv": "Microsoft.AspNetCore.Mvc.Routing.IUrlHelperFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.MemoryPoolHttpRequestStreamReaderFactory",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IHttpRequestStreamReaderFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.MemoryPoolHttpResponseStreamWriterFactory",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IHttpResponseStreamWriterFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "System.Buffers.TlsOverPerCoreLockedStacksArrayPool`1[System.Byte]",
+        "ImplType": null,
+        "Isv": "System.Buffers.ArrayPool`1[System.Byte]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "System.Buffers.TlsOverPerCoreLockedStacksArrayPool`1[System.Char]",
+        "ImplType": null,
+        "Isv": "System.Buffers.ArrayPool`1[System.Char]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.OutputFormatterSelector",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.ObjectResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.PhysicalFileResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.PhysicalFileResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.VirtualFileResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.VirtualFileResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.FileStreamResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.FileStreamResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.FileContentResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.FileContentResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.RedirectResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.RedirectResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.LocalRedirectResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.LocalRedirectResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.RedirectToActionResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.RedirectToActionResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.RedirectToRouteResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.RedirectToRouteResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.RedirectToPageResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.RedirectToPageResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Infrastructure.ContentResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.ContentResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.MvcRouteHandler",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.MvcRouteHandler",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.MvcAttributeRouteHandler",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.MvcAttributeRouteHandler",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterConfigurationProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterConfigurationProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterBuilder",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.MiddlewareFilterBuilder",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ApiExplorer.ApiDescriptionGroupCollectionProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ApiExplorer.DefaultApiDescriptionProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authentication.AuthenticationService",
+        "Isv": "Microsoft.AspNetCore.Authentication.IAuthenticationService",
+        "LifeTime": "Scoped"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authentication.NoopClaimsTransformation",
+        "Isv": "Microsoft.AspNetCore.Authentication.IClaimsTransformation",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authentication.AuthenticationHandlerProvider",
+        "Isv": "Microsoft.AspNetCore.Authentication.IAuthenticationHandlerProvider",
+        "LifeTime": "Scoped"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authentication.AuthenticationSchemeProvider",
+        "Isv": "Microsoft.AspNetCore.Authentication.IAuthenticationSchemeProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authorization.DefaultAuthorizationService",
+        "Isv": "Microsoft.AspNetCore.Authorization.IAuthorizationService",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authorization.DefaultAuthorizationPolicyProvider",
+        "Isv": "Microsoft.AspNetCore.Authorization.IAuthorizationPolicyProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authorization.DefaultAuthorizationHandlerProvider",
+        "Isv": "Microsoft.AspNetCore.Authorization.IAuthorizationHandlerProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authorization.DefaultAuthorizationEvaluator",
+        "Isv": "Microsoft.AspNetCore.Authorization.IAuthorizationEvaluator",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authorization.DefaultAuthorizationHandlerContextFactory",
+        "Isv": "Microsoft.AspNetCore.Authorization.IAuthorizationHandlerContextFactory",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authorization.Infrastructure.PassThroughAuthorizationHandler",
+        "Isv": "Microsoft.AspNetCore.Authorization.IAuthorizationHandler",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authorization.Policy.PolicyEvaluator",
+        "Isv": "Microsoft.AspNetCore.Authorization.Policy.IPolicyEvaluator",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Internal.AuthorizationApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IApplicationModelProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Formatters.FormatFilter",
+        "Isv": "Microsoft.AspNetCore.Mvc.Formatters.FormatFilter",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.DataAnnotations.Internal.MvcDataAnnotationsMvcOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Mvc.MvcOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.DataAnnotations.ValidationAttributeAdapterProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.DataAnnotations.IValidationAttributeAdapterProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.DataProtection.TypeForwardingActivator",
+        "Isv": "Microsoft.AspNetCore.DataProtection.Internal.IActivator",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.DataProtection.RegistryPolicyResolver",
+        "Isv": "Microsoft.AspNetCore.DataProtection.IRegistryPolicyResolver",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.DataProtection.Internal.KeyManagementOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.DataProtection.KeyManagement.KeyManagementOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.DataProtection.Internal.DataProtectionOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.DataProtection.DataProtectionOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager",
+        "Isv": "Microsoft.AspNetCore.DataProtection.KeyManagement.IKeyManager",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.DataProtection.Internal.HostingApplicationDiscriminator",
+        "Isv": "Microsoft.AspNetCore.DataProtection.Infrastructure.IApplicationDiscriminator",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.DataProtection.Internal.DataProtectionStartupFilter",
+        "Isv": "Microsoft.AspNetCore.Hosting.IStartupFilter",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver",
+        "Isv": "Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IDefaultKeyResolver",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider",
+        "Isv": "Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IKeyRingProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.DataProtection.IDataProtectionProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.DataProtection.XmlEncryption.CertificateResolver",
+        "Isv": "Microsoft.AspNetCore.DataProtection.XmlEncryption.ICertificateResolver",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Antiforgery.Internal.AntiforgeryOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Antiforgery.AntiforgeryOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Antiforgery.Internal.DefaultAntiforgery",
+        "Isv": "Microsoft.AspNetCore.Antiforgery.IAntiforgery",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Antiforgery.Internal.DefaultAntiforgeryTokenGenerator",
+        "Isv": "Microsoft.AspNetCore.Antiforgery.Internal.IAntiforgeryTokenGenerator",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Antiforgery.Internal.DefaultAntiforgeryTokenSerializer",
+        "Isv": "Microsoft.AspNetCore.Antiforgery.Internal.IAntiforgeryTokenSerializer",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Antiforgery.Internal.DefaultAntiforgeryTokenStore",
+        "Isv": "Microsoft.AspNetCore.Antiforgery.Internal.IAntiforgeryTokenStore",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Antiforgery.Internal.DefaultClaimUidExtractor",
+        "Isv": "Microsoft.AspNetCore.Antiforgery.Internal.IClaimUidExtractor",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Antiforgery.Internal.DefaultAntiforgeryAdditionalDataProvider",
+        "Isv": "Microsoft.AspNetCore.Antiforgery.IAntiforgeryAdditionalDataProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.Extensions.ObjectPool.ObjectPool`1[Microsoft.AspNetCore.Antiforgery.Internal.AntiforgerySerializationContext]]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.ObjectPool.ObjectPool`1[Microsoft.AspNetCore.Antiforgery.Internal.AntiforgerySerializationContext]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,System.Text.Encodings.Web.HtmlEncoder]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "System.Text.Encodings.Web.HtmlEncoder",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,System.Text.Encodings.Web.JavaScriptEncoder]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "System.Text.Encodings.Web.JavaScriptEncoder",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,System.Text.Encodings.Web.UrlEncoder]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "System.Text.Encodings.Web.UrlEncoder",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.MvcViewOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Mvc.MvcViewOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.MvcViewOptionsConfigureCompatibilityOptions",
+        "Isv": "Microsoft.Extensions.Options.IPostConfigureOptions`1[Microsoft.AspNetCore.Mvc.MvcViewOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.TempDataMvcOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Mvc.MvcOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewEngines.CompositeViewEngine",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewEngines.ICompositeViewEngine",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.ViewResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.PartialViewResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.PartialViewResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataDictionaryControllerPropertyActivator",
+        "Isv": "Microsoft.AspNetCore.Mvc.Internal.IControllerPropertyActivator",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper",
+        "Isv": "Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper`1[TModel]",
+        "Isv": "Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper`1[TModel]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.DefaultHtmlGenerator",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.IHtmlGenerator",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ExpressionTextCache",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ExpressionTextCache",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpressionProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.DefaultValidationHtmlAttributeProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.ValidationHtmlAttributeProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.JsonHelper",
+        "Isv": "Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Mvc.Formatters.JsonOutputFormatter",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentSelector",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewComponents.IViewComponentSelector",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentFactory",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewComponents.IViewComponentFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentActivator",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewComponents.IViewComponentActivator",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentDescriptorCollectionProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewComponents.IViewComponentDescriptorCollectionProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.ViewComponentResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionResultExecutor`1[Microsoft.AspNetCore.Mvc.ViewComponentResult]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ViewComponentInvokerCache",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ViewComponentInvokerCache",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentDescriptorProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewComponents.IViewComponentDescriptorProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentInvokerFactory",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewComponents.IViewComponentInvokerFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewComponents.DefaultViewComponentHelper",
+        "Isv": "Microsoft.AspNetCore.Mvc.IViewComponentHelper",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.TempDataApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IApplicationModelProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataAttributeApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IApplicationModelProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.SaveTempDataFilter",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.ControllerSaveTempDataPropertyFilter",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.ControllerSaveTempDataPropertyFilter",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ValidateAntiforgeryTokenAuthorizationFilter",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ValidateAntiforgeryTokenAuthorizationFilter",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.AutoValidateAntiforgeryTokenAuthorizationFilter",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.AutoValidateAntiforgeryTokenAuthorizationFilter",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.TempDataDictionaryFactory",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionaryFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "System.Buffers.TlsOverPerCoreLockedStacksArrayPool`1[Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ViewBufferValue]",
+        "ImplType": null,
+        "Isv": "System.Buffers.ArrayPool`1[Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ViewBufferValue]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.MemoryPoolViewBufferScope",
+        "Isv": "Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.IViewBufferScope",
+        "LifeTime": "Scoped"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.CSharpCompiler",
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.Internal.CSharpCompiler",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.DefaultRazorReferenceManager",
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.Compilation.RazorReferenceManager",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.MvcRazorMvcViewOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Mvc.MvcViewOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.RazorViewEngineOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.DefaultRazorViewEngineFileProviderAccessor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.Internal.IRazorViewEngineFileProviderAccessor",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.AspNetCore.Mvc.Razor.IRazorViewEngine]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.IRazorViewEngine",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.RazorViewCompilerProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.Compilation.IViewCompilerProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.DefaultRazorPageFactoryProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.IRazorPageFactoryProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.LazyMetadataReferenceFeature",
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.Internal.LazyMetadataReferenceFeature",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.FileProviderRazorProjectFileSystem",
+        "Isv": "Microsoft.AspNetCore.Razor.Language.RazorProjectFileSystem",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.AspNetCore.Razor.Language.RazorProjectEngine]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Razor.Language.RazorProjectEngine",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.AspNetCore.Razor.Language.RazorProject]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Razor.Language.RazorProject",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Extensions.MvcRazorTemplateEngine",
+        "Isv": "Microsoft.AspNetCore.Razor.Language.RazorTemplateEngine",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,Microsoft.AspNetCore.Razor.Language.RazorEngine]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.AspNetCore.Razor.Language.RazorEngine",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.RazorPageActivator",
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.IRazorPageActivator",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.DefaultTagHelperActivator",
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.ITagHelperActivator",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperComponentPropertyActivator",
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.TagHelpers.ITagHelperComponentPropertyActivator",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.DefaultTagHelperFactory",
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.ITagHelperFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Razor.Internal.TagHelperComponentManager",
+        "Isv": "Microsoft.AspNetCore.Mvc.Razor.TagHelpers.ITagHelperComponentManager",
+        "LifeTime": "Scoped"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Caching.Memory.MemoryCache",
+        "Isv": "Microsoft.Extensions.Caching.Memory.IMemoryCache",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Internal.RazorPagesRazorViewEngineOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptionsConfigureCompatibilityOptions",
+        "Isv": "Microsoft.Extensions.Options.IPostConfigureOptions`1[Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionDescriptorProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Abstractions.IActionDescriptorProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionDescriptorChangeProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Infrastructure.IActionDescriptorChangeProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Internal.RazorProjectPageRouteModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Internal.CompiledPageRouteModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Internal.DefaultPageApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Internal.AutoValidateAntiforgeryPageApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Internal.AuthorizationPageApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.TempDataFilterPageApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.ViewDataAttributePageApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Internal.ResponseCacheFilterApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IPageApplicationModelProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Internal.PageActionInvokerProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.Abstractions.IActionInvokerProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.DefaultPageModelActivatorProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.RazorPages.IPageModelActivatorProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.DefaultPageModelFactoryProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.RazorPages.IPageModelFactoryProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.DefaultPageActivatorProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.RazorPages.IPageActivatorProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.DefaultPageFactoryProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.RazorPages.IPageFactoryProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Internal.DefaultPageLoader",
+        "Isv": "Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.IPageLoader",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.DefaultPageHandlerMethodSelector",
+        "Isv": "Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.IPageHandlerMethodSelector",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Internal.DefaultPageArgumentBinder",
+        "Isv": "Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageArgumentBinder",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageResultExecutor",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.RazorPages.PageSaveTempDataPropertyFilter",
+        "Isv": "Microsoft.AspNetCore.Mvc.RazorPages.PageSaveTempDataPropertyFilter",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.TagHelpers.Cache.DistributedCacheTagHelperStorage",
+        "Isv": "Microsoft.AspNetCore.Mvc.TagHelpers.Cache.IDistributedCacheTagHelperStorage",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.TagHelpers.Cache.DistributedCacheTagHelperFormatter",
+        "Isv": "Microsoft.AspNetCore.Mvc.TagHelpers.Cache.IDistributedCacheTagHelperFormatter",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.TagHelpers.Cache.DistributedCacheTagHelperService",
+        "Isv": "Microsoft.AspNetCore.Mvc.TagHelpers.Cache.IDistributedCacheTagHelperService",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Caching.Distributed.MemoryDistributedCache",
+        "Isv": "Microsoft.Extensions.Caching.Distributed.IDistributedCache",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.TagHelpers.Internal.CacheTagHelperMemoryCacheFactory",
+        "Isv": "Microsoft.AspNetCore.Mvc.TagHelpers.Internal.CacheTagHelperMemoryCacheFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.MvcJsonMvcOptionsSetup",
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Mvc.MvcOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.MvcJsonOptionsConfigureCompatibilityOptions",
+        "Isv": "Microsoft.Extensions.Options.IPostConfigureOptions`1[Microsoft.AspNetCore.Mvc.MvcJsonOptions]",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Formatters.Json.JsonPatchOperationsArrayProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor",
+        "Isv": "Microsoft.AspNetCore.Mvc.Formatters.Json.Internal.JsonResultExecutor",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Cors.Infrastructure.CorsService",
+        "Isv": "Microsoft.AspNetCore.Cors.Infrastructure.ICorsService",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Cors.Infrastructure.DefaultCorsPolicyProvider",
+        "Isv": "Microsoft.AspNetCore.Cors.Infrastructure.ICorsPolicyProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Cors.Internal.CorsApplicationModelProvider",
+        "Isv": "Microsoft.AspNetCore.Mvc.ApplicationModels.IApplicationModelProvider",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter",
+        "Isv": "Microsoft.AspNetCore.Mvc.Cors.CorsAuthorizationFilter",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Options.ConfigureNamedOptions`1[Microsoft.AspNetCore.Mvc.Infrastructure.MvcCompatibilityOptions]",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Mvc.Infrastructure.MvcCompatibilityOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,System.Object]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.EntityFrameworkCore.DbContextOptions`1[IdentityAPI.Data.SqliteContext]",
+        "LifeTime": "Scoped"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,System.Object]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "Microsoft.EntityFrameworkCore.DbContextOptions",
+        "LifeTime": "Scoped"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "IdentityAPI.Data.SqliteContext",
+        "Isv": "IdentityAPI.Data.SqliteContext",
+        "LifeTime": "Scoped"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "IdentityAPI.DiskLogProvider",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Logging.ILoggerProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Options.ConfigureNamedOptions`1[Microsoft.Extensions.Caching.Redis.RedisCacheOptions]",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.Extensions.Caching.Redis.RedisCacheOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.Extensions.Caching.Redis.RedisCache",
+        "Isv": "Microsoft.Extensions.Caching.Distributed.IDistributedCache",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.ResponseCaching.Internal.ResponseCachingPolicyProvider",
+        "Isv": "Microsoft.AspNetCore.ResponseCaching.Internal.IResponseCachingPolicyProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.ResponseCaching.Internal.ResponseCachingKeyProvider",
+        "Isv": "Microsoft.AspNetCore.ResponseCaching.Internal.IResponseCachingKeyProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,System.Object]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "StackExchange.Redis.IConnectionMultiplexer",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authentication.SystemClock",
+        "Isv": "Microsoft.AspNetCore.Authentication.ISystemClock",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Options.ConfigureNamedOptions`1[Microsoft.AspNetCore.Authentication.AuthenticationOptions]",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Authentication.AuthenticationOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerPostConfigureOptions",
+        "Isv": "Microsoft.Extensions.Options.IPostConfigureOptions`1[Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Options.ConfigureNamedOptions`1[Microsoft.AspNetCore.Authentication.AuthenticationOptions]",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Authentication.AuthenticationOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "Microsoft.Extensions.Options.ConfigureNamedOptions`1[Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions]",
+        "ImplType": null,
+        "Isv": "Microsoft.Extensions.Options.IConfigureOptions`1[Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions]",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler",
+        "Isv": "Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.CapMarkerService",
+        "Isv": "DotNetCore.CAP.CapMarkerService",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Internal.JsonContentSerializer",
+        "Isv": "DotNetCore.CAP.Abstractions.IContentSerializer",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Internal.DefaultMessagePacker",
+        "Isv": "DotNetCore.CAP.Abstractions.IMessagePacker",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Internal.DefaultConsumerServiceSelector",
+        "Isv": "DotNetCore.CAP.Internal.IConsumerServiceSelector",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Internal.ModelBinderFactory",
+        "Isv": "DotNetCore.CAP.Abstractions.IModelBinderFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Internal.CallbackMessageSender",
+        "Isv": "DotNetCore.CAP.Internal.ICallbackMessageSender",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Internal.ConsumerInvokerFactory",
+        "Isv": "DotNetCore.CAP.Internal.IConsumerInvokerFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Internal.MethodMatcherCache",
+        "Isv": "DotNetCore.CAP.Internal.MethodMatcherCache",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.ConsumerHandler",
+        "Isv": "DotNetCore.CAP.IProcessingServer",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Processor.CapProcessingServer",
+        "Isv": "DotNetCore.CAP.IProcessingServer",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.DefaultBootstrapper",
+        "Isv": "DotNetCore.CAP.IBootstrapper",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Processor.States.StateChanger",
+        "Isv": "DotNetCore.CAP.Processor.States.IStateChanger",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Processor.NeedRetryMessageProcessor",
+        "Isv": "DotNetCore.CAP.Processor.NeedRetryMessageProcessor",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Processor.Dispatcher",
+        "Isv": "DotNetCore.CAP.IDispatcher",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.DefaultSubscriberExecutor",
+        "Isv": "DotNetCore.CAP.ISubscriberExecutor",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.CapMessageQueueMakerService",
+        "Isv": "DotNetCore.CAP.CapMessageQueueMakerService",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "DotNetCore.CAP.RabbitMQOptions",
+        "ImplType": null,
+        "Isv": "DotNetCore.CAP.RabbitMQOptions",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.RabbitMQ.RabbitMQConsumerClientFactory",
+        "Isv": "DotNetCore.CAP.IConsumerClientFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.RabbitMQ.ConnectionChannelPool",
+        "Isv": "DotNetCore.CAP.RabbitMQ.IConnectionChannelPool",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.RabbitMQ.RabbitMQPublishMessageSender",
+        "Isv": "DotNetCore.CAP.IPublishExecutor",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.RabbitMQ.RabbitMQPublishMessageSender",
+        "Isv": "DotNetCore.CAP.IPublishMessageSender",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "DotNetCore.CAP.DashboardOptions",
+        "ImplType": null,
+        "Isv": "DotNetCore.CAP.DashboardOptions",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "DotNetCore.CAP.Dashboard.RouteCollection",
+        "ImplType": null,
+        "Isv": "DotNetCore.CAP.Dashboard.RouteCollection",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Dashboard.GatewayProxy.Requester.HttpClientHttpRequester",
+        "Isv": "DotNetCore.CAP.Dashboard.GatewayProxy.Requester.IHttpRequester",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Dashboard.GatewayProxy.Requester.MemoryHttpClientCache",
+        "Isv": "DotNetCore.CAP.Dashboard.GatewayProxy.Requester.IHttpClientCache",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.Dashboard.GatewayProxy.RequestMapper",
+        "Isv": "DotNetCore.CAP.Dashboard.GatewayProxy.IRequestMapper",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "DotNetCore.CAP.DiscoveryOptions",
+        "ImplType": null,
+        "Isv": "DotNetCore.CAP.DiscoveryOptions",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.NodeDiscovery.DiscoveryProviderFactory",
+        "Isv": "DotNetCore.CAP.NodeDiscovery.IDiscoveryProviderFactory",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.NodeDiscovery.ConsulProcessingNodeServer",
+        "Isv": "DotNetCore.CAP.IProcessingServer",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": "System.Func`2[System.IServiceProvider,DotNetCore.CAP.NodeDiscovery.INodeDiscoveryProvider]",
+        "ImplIns": null,
+        "ImplType": null,
+        "Isv": "DotNetCore.CAP.NodeDiscovery.INodeDiscoveryProvider",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.CapDatabaseStorageMarkerService",
+        "Isv": "DotNetCore.CAP.CapDatabaseStorageMarkerService",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.MySql.MySqlStorage",
+        "Isv": "DotNetCore.CAP.IStorage",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.MySql.MySqlStorageConnection",
+        "Isv": "DotNetCore.CAP.IStorageConnection",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.MySql.MySqlPublisher",
+        "Isv": "DotNetCore.CAP.ICapPublisher",
+        "LifeTime": "Scoped"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.MySql.MySqlPublisher",
+        "Isv": "DotNetCore.CAP.ICallbackPublisher",
+        "LifeTime": "Scoped"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.MySql.MySqlCollectProcessor",
+        "Isv": "DotNetCore.CAP.Processor.ICollectProcessor",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "DotNetCore.CAP.MySqlCapTransaction",
+        "Isv": "DotNetCore.CAP.CapTransactionBase",
+        "LifeTime": "Transient"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "DotNetCore.CAP.MySqlOptions",
+        "ImplType": null,
+        "Isv": "DotNetCore.CAP.MySqlOptions",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": "DotNetCore.CAP.CapOptions",
+        "ImplType": null,
+        "Isv": "DotNetCore.CAP.CapOptions",
+        "LifeTime": "Singleton"
+    },
+    {
+        "Factory": null,
+        "ImplIns": null,
+        "ImplType": "Microsoft.AspNetCore.Builder.CapStartupFilter",
+        "Isv": "Microsoft.AspNetCore.Hosting.IStartupFilter",
+        "LifeTime": "Transient"
+    }
+]

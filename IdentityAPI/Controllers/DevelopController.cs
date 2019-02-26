@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace IdentityAPI.Controllers
 {
@@ -12,10 +13,15 @@ namespace IdentityAPI.Controllers
     [ApiController]
     public class DevelopController : ControllerBase
     {
-
+        private readonly ILogger<DevelopController> logger;
+        public DevelopController(ILogger<DevelopController> logger)
+        {
+            this.logger = logger;
+        }
         [HttpGet]
         public IActionResult DevTest()
         {
+            logger.LogDebug(ServiceHelper.DiInfoToJson());
             return Ok();
         }
     }
