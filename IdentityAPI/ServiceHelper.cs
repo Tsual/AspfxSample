@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IdentityAPI
 {
-    public class ServiceHelper:IServiceHelper
+    internal class ServiceHelper:IServiceHelper
     {
         private ServiceHelper()
         {
