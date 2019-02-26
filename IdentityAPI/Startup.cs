@@ -66,6 +66,7 @@ namespace IdentityAPI
                 arg.InstanceName = Configuration["redis:instance_name"];
             });
             services.AddResponseCaching();
+            services.AddSingleton<IServiceHelper>(ServiceHelper.Instance);
             services.Add(new ServiceDescriptor(typeof(IConnectionMultiplexer), factory: (sp) => RedisCache.Instance[Configuration["redis:connect_string"]], lifetime: ServiceLifetime.Singleton));
             services.AddAuthentication(arg =>
             {
@@ -128,15 +129,8 @@ namespace IdentityAPI
 
             if (HostingEnvironment.IsDevelopment())
             {
-                foreach (var sv in services)
-                    ServiceHelper.DiInfo.Add(new Dictionary<string, string>() {
-                        {"Factory",sv.ImplementationFactory?.ToString() },
-                        {"ImplIns",sv.ImplementationInstance?.ToString() },
-                        {"ImplType",sv.ImplementationType?.ToString() },
-                        {"Isv",sv.ServiceType?.ToString() },
-                        {"LifeTime",sv.Lifetime.ToString() },
-                    });
-                Logger.LogDebug("Final DI Container:" + ServiceHelper.DiInfoToJson());
+                ServiceHelper.Instance.Push(services);
+                Logger.LogDebug("Final DI Container:" + ServiceHelper.Instance.DiInfoToJson());
             }
         }
 

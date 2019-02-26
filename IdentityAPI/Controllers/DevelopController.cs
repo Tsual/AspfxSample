@@ -14,14 +14,16 @@ namespace IdentityAPI.Controllers
     public class DevelopController : ControllerBase
     {
         private readonly ILogger<DevelopController> logger;
-        public DevelopController(ILogger<DevelopController> logger)
+        private readonly IServiceHelper serviceHelper;
+        public DevelopController(ILogger<DevelopController> logger, IServiceHelper serviceHelper)
         {
             this.logger = logger;
+            this.serviceHelper = serviceHelper;
         }
         [HttpGet("LogServices")]
         public IActionResult LogServices()
         {
-            logger.LogDebug(ServiceHelper.DiInfoToJson());
+            logger.LogDebug(serviceHelper.DiInfoToJson());
             return Ok();
         }
     }
