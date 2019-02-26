@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityAPI", "IdentityAPI\
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Helper", "Helper\Helper.shproj", "{C6130230-A430-4DFC-A8D6-30A010B9E280}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApp", "BlogApp\BlogApp.csproj", "{E7F72F4A-EB74-43BC-BA3C-5A2368D10D14}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Helper\Helper.projitems*{c6130230-a430-4dfc-a8d6-30a010b9e280}*SharedItemsImports = 13
@@ -22,10 +20,6 @@ Global
 		{E217971F-2591-4DFB-ABF1-3748E3A76CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E217971F-2591-4DFB-ABF1-3748E3A76CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E217971F-2591-4DFB-ABF1-3748E3A76CC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7F72F4A-EB74-43BC-BA3C-5A2368D10D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7F72F4A-EB74-43BC-BA3C-5A2368D10D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7F72F4A-EB74-43BC-BA3C-5A2368D10D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7F72F4A-EB74-43BC-BA3C-5A2368D10D14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
