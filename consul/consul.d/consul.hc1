@@ -1,0 +1,6 @@
+datacenter = "Tdx"
+data_dir = "/mnt/e/Proj/AspnetcoreSample/consul/"
+encrypt = "Laj2FZCwlt8475wD4WtwUQ=="
+ui = true
+server = true
+bootstrap_expect = 1

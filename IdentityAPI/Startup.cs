@@ -105,32 +105,29 @@ namespace IdentityAPI
                     //  },
                 };
             });
-            services.AddCap(arg =>
-            {
-                arg.UseRabbitMQ(cfg =>
-                {
-                    cfg.HostName = Configuration["rabbitmq:HostName"];
-                });
-                arg.UseDashboard(cfg =>
-                {
-
-                });
-                arg.UseDiscovery(cfg =>
-                {
-                    cfg.DiscoveryServerHostName = Configuration["consul:ServerHostName"];
-                    cfg.DiscoveryServerPort = int.Parse(Configuration["consul:ServerPort"]);
-                    cfg.CurrentNodeHostName = Configuration["consul:CurrentNodeHostName"];
-                    cfg.CurrentNodePort = int.Parse(Configuration["consul:CurrentNodePort"]);
-                    cfg.NodeId = int.Parse(Configuration["consul:NodeId"]);
-                    cfg.NodeName = Configuration["consul:NodeName"];
-                });
-                arg.UseMySql(Configuration["mysql:cap:connect_string"]);
-            });
+            //services.AddCap(arg =>
+            //{
+            //    arg.UseRabbitMQ(cfg =>
+            //    {
+            //        cfg.HostName = Configuration["rabbitmq:HostName"];
+            //    });
+            //    //arg.UseDashboard();
+            //    arg.UseDiscovery(cfg =>
+            //    {
+            //        cfg.DiscoveryServerHostName = Configuration["consul:ServerHostName"];
+            //        cfg.DiscoveryServerPort = int.Parse(Configuration["consul:ServerPort"]);
+            //        cfg.CurrentNodeHostName = Configuration["consul:CurrentNodeHostName"];
+            //        cfg.CurrentNodePort = int.Parse(Configuration["consul:CurrentNodePort"]);
+            //        cfg.NodeId = int.Parse(Configuration["consul:NodeId"]);
+            //        cfg.NodeName = Configuration["consul:NodeName"];
+            //    });
+            //    arg.UseMySql(Configuration["mysql:cap:connect_string"]);
+            //});
 
             if (HostingEnvironment.IsDevelopment())
             {
                 ServiceHelper.Instance.Push(services);
-                Logger.LogDebug("Final DI Container:" + ServiceHelper.Instance.DiInfoToJson());
+                //Logger.LogDebug("Final DI Container:" + ServiceHelper.Instance.DiInfoToJson());
             }
         }
 

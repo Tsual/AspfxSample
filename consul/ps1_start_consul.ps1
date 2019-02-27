@@ -1,1 +1,1 @@
-consul agent -server -data-dir . -bind 127.0.0.1 -bootstrap-expect 0 -datacenter Tdx -node consul.master -ui
+consul agent -server -data-dir=.\ -bind=10.73.242.161 -bootstrap-expect=1 -node=consul.a -ui
