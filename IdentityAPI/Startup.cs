@@ -12,13 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Caching.Distributed;
-using StackExchange.Redis;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Helper;
 using IdentityAPI.Core;
-using Newtonsoft.Json;
 
 namespace IdentityAPI
 {
@@ -55,7 +52,8 @@ namespace IdentityAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<SqliteContext>();
-            services.AddLogging(arg=> {
+            services.AddLogging(arg =>
+            {
                 arg.AddConsole();
                 if (HostingEnvironment.IsDevelopment())
                     arg.AddProvider(new DiskLogProvider());
@@ -66,8 +64,9 @@ namespace IdentityAPI
                 arg.InstanceName = Configuration["redis:instance_name"];
             });
             services.AddResponseCaching();
+            //可以写成静态扩展方法，这样更清楚点
             services.AddSingleton<IServiceHelper>(ServiceHelper.Instance);
-            services.Add(new ServiceDescriptor(typeof(IConnectionMultiplexer), factory: (sp) => RedisCache.Instance[Configuration["redis:connect_string"]], lifetime: ServiceLifetime.Singleton));
+            services.AddSingleton(RedisCache.Instance[Configuration["redis:connect_string"]]);
             services.AddAuthentication(arg =>
             {
                 arg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -105,24 +104,35 @@ namespace IdentityAPI
                     //  },
                 };
             });
-            //services.AddCap(arg =>
-            //{
-            //    arg.UseRabbitMQ(cfg =>
-            //    {
-            //        cfg.HostName = Configuration["rabbitmq:HostName"];
-            //    });
-            //    //arg.UseDashboard();
-            //    arg.UseDiscovery(cfg =>
-            //    {
-            //        cfg.DiscoveryServerHostName = Configuration["consul:ServerHostName"];
-            //        cfg.DiscoveryServerPort = int.Parse(Configuration["consul:ServerPort"]);
-            //        cfg.CurrentNodeHostName = Configuration["consul:CurrentNodeHostName"];
-            //        cfg.CurrentNodePort = int.Parse(Configuration["consul:CurrentNodePort"]);
-            //        cfg.NodeId = int.Parse(Configuration["consul:NodeId"]);
-            //        cfg.NodeName = Configuration["consul:NodeName"];
-            //    });
-            //    arg.UseMySql(Configuration["mysql:cap:connect_string"]);
-            //});
+            /** Nuget:DotNetCore.CAP
+                这个包现在还没有足够完整
+            services.AddCap(arg =>
+            {
+                arg.UseRabbitMQ(cfg =>
+                {
+                    cfg.HostName = Configuration["rabbitmq:HostName"];
+                });
+                //arg.UseDashboard();
+                //dashboard 有bug
+                //响应缓存更好一些
+                //抽象的很好但还是需要一些客户端功能
+                arg.UseDiscovery(cfg =>
+                {
+                    cfg.DiscoveryServerHostName = Configuration["consul:ServerHostName"];
+                    cfg.DiscoveryServerPort = int.Parse(Configuration["consul:ServerPort"]);
+                    cfg.CurrentNodeHostName = Configuration["consul:CurrentNodeHostName"];
+                    cfg.CurrentNodePort = int.Parse(Configuration["consul:CurrentNodePort"]);
+                    cfg.NodeId = int.Parse(Configuration["consul:NodeId"]);
+                    cfg.NodeName = Configuration["consul:NodeName"];
+                });
+                arg.UseMySql(Configuration["mysql:cap:connect_string"]);
+            });
+            **/
+            services.AddTransient(factory=>AutoConsul.NewClient(Configuration));
+            services.AddRabbitMQ(arg =>
+            {
+                arg.HostName = Configuration["rabbitmq:HostName"];
+            });
 
             if (HostingEnvironment.IsDevelopment())
             {
@@ -132,17 +142,24 @@ namespace IdentityAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime appLifetime)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime appLifetime, Microsoft.AspNetCore.Hosting.Server.IServer server)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            appLifetime.ApplicationStarted.Register(callback: () =>
+            appLifetime.ApplicationStarted.Register(callback: async () =>
             {
                 WarmUp.DoWork(Configuration);
+                await AutoConsul.RegistAsync(Configuration, server);
             });
+
+            appLifetime.ApplicationStopping.Register(callback: () =>
+           {
+               //防止主线程过快退出而导致进程退出
+               AutoConsul.DeregistAsync(Configuration).Wait();
+           });
 
 
             app.UseResponseCaching();

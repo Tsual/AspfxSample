@@ -8,6 +8,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Consul;
 using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.Extensions.ObjectPool;
+using RabbitMQ.Client;
+using System.Text;
+using RabbitMQ.Client.Events;
 
 namespace IdentityAPI.Controllers
 {
@@ -19,12 +23,22 @@ namespace IdentityAPI.Controllers
         private readonly IServiceHelper serviceHelper;
         private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
         private readonly IServer server;
-        public DevController(ILogger<DevController> logger, IServiceHelper serviceHelper, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,IServer server)
+        private readonly ObjectPoolProvider objectPoolProvider;
+        private readonly ConnectionFactory rabbitFactory;
+        public DevController(
+            ILogger<DevController> logger,
+            IServiceHelper serviceHelper,
+            Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
+            IServer server,
+            ObjectPoolProvider objectPoolProvider,
+            ConnectionFactory rabbitFactory)
         {
             this.logger = logger;
             this.serviceHelper = serviceHelper;
             this.hostingEnvironment = hostingEnvironment;
             this.server = server;
+            this.objectPoolProvider = objectPoolProvider;
+            this.rabbitFactory = rabbitFactory;
         }
         [HttpGet("logdi")]
         public IActionResult LogServices()
@@ -35,18 +49,44 @@ namespace IdentityAPI.Controllers
         [HttpGet("consul")]
         public async Task<IActionResult> consulAsync()
         {
-            ConsulClient consulClient = new ConsulClient(cfg => {
+            ConsulClient consulClient = new ConsulClient(cfg =>
+            {
                 cfg.Address = new Uri("http://localhost:8500");
                 cfg.Datacenter = "Tdx";
             });
 
-            var agent =consulClient.Agent;
-            var svs=await agent.Services();
+            var agent = consulClient.Agent;
+            var svs = await agent.Services();
 
             foreach (var t in server.Features)
                 logger.LogDebug(t.ToString());
 
             return new ContentResult() { Content = "ops" };
+        }
+        [HttpPost("mqsend")]
+        public IActionResult rabbitsend(string msg)
+        {
+            using (var conn = rabbitFactory.CreateConnection())
+            using (var channel = conn.CreateModel())
+            {
+                channel.QueueDeclare(queue: "dev",
+                                    durable: false,
+                                    exclusive: false,
+                                    autoDelete: false,
+                                    arguments: null);
+                channel.BasicPublish("", "dev", null, Encoding.UTF8.GetBytes(msg));
+            }
+            return Ok();
+        }
+        [HttpGet("mqreceive")]
+        public IActionResult rabbitreceive()
+        {
+            using (var conn = rabbitFactory.CreateConnection())
+            using (var channel = conn.CreateModel())
+            {
+                var rec = channel.BasicGet("dev", true);
+                return Ok(rec!=null?Encoding.UTF8.GetString(rec.Body):"null");
+            }
         }
     }
 }
