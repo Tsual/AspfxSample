@@ -128,11 +128,11 @@ namespace IdentityAPI
                 arg.UseMySql(Configuration["mysql:cap:connect_string"]);
             });
             **/
-            services.AddTransient(factory=>AutoConsul.NewClient(Configuration));
-            services.AddRabbitMQ(arg =>
-            {
-                arg.HostName = Configuration["rabbitmq:HostName"];
-            });
+            services.AddTransient(factory => AutoConsul.NewClient(Configuration));
+            //静态扩展示例
+            //非复杂情况下真的很臃肿
+            services.AddRabbitMQ(arg => arg.HostName = Configuration["rabbitmq:HostName"]);
+            services.AddConsulCaller(Configuration);
 
             if (HostingEnvironment.IsDevelopment())
             {
@@ -153,6 +153,7 @@ namespace IdentityAPI
             {
                 WarmUp.DoWork(Configuration);
                 await AutoConsul.RegistAsync(Configuration, server);
+                new ConsulCaller(Configuration);
             });
 
             appLifetime.ApplicationStopping.Register(callback: () =>

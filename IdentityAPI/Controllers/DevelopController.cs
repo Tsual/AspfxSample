@@ -12,6 +12,7 @@ using Microsoft.Extensions.ObjectPool;
 using RabbitMQ.Client;
 using System.Text;
 using RabbitMQ.Client.Events;
+using System.Net;
 
 namespace IdentityAPI.Controllers
 {
@@ -52,7 +53,7 @@ namespace IdentityAPI.Controllers
             ConsulClient consulClient = new ConsulClient(cfg =>
             {
                 cfg.Address = new Uri("http://localhost:8500");
-                cfg.Datacenter = "Tdx";
+                //cfg.Datacenter = "Tdx";
             });
 
             var agent = consulClient.Agent;
@@ -60,6 +61,8 @@ namespace IdentityAPI.Controllers
 
             foreach (var t in server.Features)
                 logger.LogDebug(t.ToString());
+
+            
 
             return new ContentResult() { Content = "ops" };
         }
