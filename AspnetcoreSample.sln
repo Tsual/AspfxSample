@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityAPI", "IdentityAPI\IdentityAPI.csproj", "{E217971F-2591-4DFB-ABF1-3748E3A76CC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackendSample", "BackendSample\BackendSample.csproj", "{E217971F-2591-4DFB-ABF1-3748E3A76CC6}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Helper", "Helper\Helper.shproj", "{C6130230-A430-4DFC-A8D6-30A010B9E280}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApp", "BlogApp\BlogApp.csproj", "{8992B6BA-050F-4DD5-9980-0CC9D973577C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{24CF19E1-8DC2-4FF9-A4D5-D56DBE0D3AC6}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -20,6 +24,14 @@ Global
 		{E217971F-2591-4DFB-ABF1-3748E3A76CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E217971F-2591-4DFB-ABF1-3748E3A76CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E217971F-2591-4DFB-ABF1-3748E3A76CC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8992B6BA-050F-4DD5-9980-0CC9D973577C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8992B6BA-050F-4DD5-9980-0CC9D973577C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8992B6BA-050F-4DD5-9980-0CC9D973577C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8992B6BA-050F-4DD5-9980-0CC9D973577C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24CF19E1-8DC2-4FF9-A4D5-D56DBE0D3AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24CF19E1-8DC2-4FF9-A4D5-D56DBE0D3AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24CF19E1-8DC2-4FF9-A4D5-D56DBE0D3AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24CF19E1-8DC2-4FF9-A4D5-D56DBE0D3AC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

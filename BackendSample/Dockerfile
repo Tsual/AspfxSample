@@ -4,16 +4,16 @@ EXPOSE 80
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY ["../Identity/Identity.csproj", "../Identity/"]
-RUN dotnet restore "../Identity/Identity.csproj"
+COPY ["../BackendSample/BackendSample.csproj", "../BackendSample/"]
+RUN dotnet restore "../BackendSample/BackendSample.csproj"
 COPY . .
-WORKDIR "/src/../Identity"
-RUN dotnet build "Identity.csproj" -c Release -o /app
+WORKDIR "/src/../BackendSample"
+RUN dotnet build "BackendSample.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "Identity.csproj" -c Release -o /app
+RUN dotnet publish "BackendSample.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "Identity.dll"]
+ENTRYPOINT ["dotnet", "BackendSample.dll"]
