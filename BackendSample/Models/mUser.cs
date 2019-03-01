@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdentityAPI.Models
+namespace BackendSample.Models
 {
     [Table(name: "USER")]
     public class mUser

@@ -1,0 +1,5 @@
+ubuntu subsystem 完美运行
+写个redis.conf就行了
+集群配置另一个工程有
+用5.0+cli很简单 3cluster+3slave
+drump db不嫌大可以一份到处用

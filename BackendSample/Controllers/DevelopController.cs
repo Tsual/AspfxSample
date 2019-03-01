@@ -15,7 +15,7 @@ using RabbitMQ.Client.Events;
 using System.Net;
 using System.Reflection;
 
-namespace IdentityAPI.Controllers
+namespace BackendSample.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

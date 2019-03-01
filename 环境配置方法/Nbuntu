@@ -1,0 +1,10 @@
+ubuntu 18.04 for win10
+在win10商店就有 提前开启linux子系统就行
+重负载的框架有时会有一些问题
+
+ubuntu 文件系统在%User%\AppData\Local\Packages\%APP_INSTANCE%\LocalState\rootfs 用searcheverything 贼好用
+windows文件系统挂载在/mnt
+然后拿vscode去改配置
+嗯。。。
+我再也不用测试环境的主机了
+白白嘞您

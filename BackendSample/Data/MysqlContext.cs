@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdentityAPI.Data
+namespace BackendSample.Data
 {
     public class MysqlContext:DbContext
     {

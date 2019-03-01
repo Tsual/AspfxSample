@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityAPI.Data;
+using BackendSample.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +15,9 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using IdentityAPI.Core;
+using BackendSample.Core;
 
-namespace IdentityAPI
+namespace BackendSample
 {
     public class Startup
     {

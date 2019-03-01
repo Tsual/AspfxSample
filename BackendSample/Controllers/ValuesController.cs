@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using IdentityAPI.Data;
-using IdentityAPI.Models;
+using BackendSample.Data;
+using BackendSample.Models;
 using Microsoft.Extensions.Logging;
 using System.Text;
 using Helper;
@@ -14,7 +14,7 @@ using StackExchange.Redis;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
-namespace IdentityAPI.Controllers
+namespace BackendSample.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

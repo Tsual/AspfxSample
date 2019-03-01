@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityAPI.Core;
-using IdentityAPI.Data;
-using IdentityAPI.Models;
+using BackendSample.Core;
+using BackendSample.Data;
+using BackendSample.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
 
-namespace IdentityAPI.Controllers
+namespace BackendSample.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

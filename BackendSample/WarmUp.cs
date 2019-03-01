@@ -1,7 +1,7 @@
 ﻿using Helper;
-using IdentityAPI.Core;
-using IdentityAPI.Data;
-using IdentityAPI.Models;
+using BackendSample.Core;
+using BackendSample.Data;
+using BackendSample.Models;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Redis;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IdentityAPI
+namespace BackendSample
 {
     public class WarmUp
     {

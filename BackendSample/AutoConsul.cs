@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Consul;
 using Microsoft.AspNetCore.Hosting;
 using System.Threading;
-using IdentityAPI;
+using BackendSample;
 
-namespace IdentityAPI
+namespace BackendSample
 {
     internal class AutoConsul
     {

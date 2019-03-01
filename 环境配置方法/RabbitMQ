@@ -1,0 +1,9 @@
+这东西搭建方式满天飞 竞品也一大堆
+
+erlang装一下
+然后官网windows版本
+
+subsystem很不好用 进程翻译有问题 汇编水平不够 没法定位bug
+rabbitmq-server start 做成服务还是命令行开都不错
+
+生产环境部署网上博客一大堆 不细写了

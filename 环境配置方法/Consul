@@ -1,0 +1,8 @@
+这东西简直是个坑
+docker跑server有地址问题 需要大量配置
+subsystem又特么golang报错
+然后只能装个win版本的
+
+consul agent -server -dev standanle开发模式
+8500管理和webapi 具体看postman测试案例导出
+8600dns
