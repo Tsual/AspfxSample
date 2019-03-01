@@ -13,6 +13,7 @@ using RabbitMQ.Client;
 using System.Text;
 using RabbitMQ.Client.Events;
 using System.Net;
+using System.Reflection;
 
 namespace IdentityAPI.Controllers
 {
@@ -62,7 +63,8 @@ namespace IdentityAPI.Controllers
             foreach (var t in server.Features)
                 logger.LogDebug(t.ToString());
 
-            
+            var appDomain=AppDomain.CurrentDomain.GetAssemblies();
+           
 
             return new ContentResult() { Content = "ops" };
         }

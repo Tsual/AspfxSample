@@ -21,8 +21,14 @@ namespace IdentityAPI
         {
             JwtCore.SecretKey = new SymmetricSecurityKey(Byte16String.Decode(configuration["jwt:SecretKey"]));
             SqliteContext _context = new SqliteContext(configuration);
-            DbWarmUpAsync(_context).Wait();
-            RedisWarmUp(configuration, _context);
+
+            var cfg_sqlite = configuration["warmup:refresh:sqlite"];
+            if (cfg_sqlite != null && cfg_sqlite == "true")
+                DbWarmUpAsync(_context).Wait();
+
+            var cfg_redis = configuration["warmup:refresh:redis"];
+            if (cfg_redis != null && cfg_redis == "true")
+                RedisWarmUp(configuration, _context);
         }
 
         private static async Task DbWarmUpAsync(SqliteContext _context)
