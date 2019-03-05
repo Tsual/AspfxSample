@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Extensions.Logging
 {
-    public class DiskLogProvider : ILoggerProvider
+    internal class DiskLogProvider : ILoggerProvider
     {
         internal TextWriter textWriter;
         public DiskLogProvider()
@@ -70,5 +70,12 @@ namespace Microsoft.Extensions.Logging
         }
     }
 
+    public static class DiskLogProviderExtension
+    {
+        public static ILoggingBuilder AddDiskLogger(this ILoggingBuilder builder)
+        {
+            return builder?.AddProvider(new DiskLogProvider());
+        }
+    }
 
 }

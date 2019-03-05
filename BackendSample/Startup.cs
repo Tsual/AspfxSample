@@ -55,7 +55,7 @@ namespace BackendSample
             {
                 arg.AddConsole();
                 if (HostingEnvironment.IsDevelopment())
-                    arg.AddProvider(new DiskLogProvider());
+                    arg.AddDiskLogger();
             });
             services.AddDistributedRedisCache(arg =>
             {

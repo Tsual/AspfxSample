@@ -28,7 +28,7 @@ namespace IdentityServer
             {
                 arg.AddConsole();
                 if (env.IsDevelopment())
-                    arg.AddProvider(new DiskLogProvider());
+                    arg.AddDiskLogger();
             });
 
             var identityBuilder = services.AddIdentityServer()
