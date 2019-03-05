@@ -1,5 +1,4 @@
 ﻿using Helper;
-using BackendSample.Core;
 using BackendSample.Data;
 using BackendSample.Models;
 using Microsoft.Extensions.Caching.Distributed;
@@ -19,7 +18,7 @@ namespace BackendSample
     {
         public static void DoWork(IConfiguration configuration)
         {
-            JwtCore.SecretKey = new SymmetricSecurityKey(Byte16String.Decode(configuration["jwt:SecretKey"]));
+            LocalJwt.SecretKey = new SymmetricSecurityKey(Byte16String.Decode(configuration["jwt:SecretKey"]));
             SqliteContext _context = new SqliteContext(configuration);
 
             var cfg_sqlite = configuration["warmup:refresh:sqlite"];

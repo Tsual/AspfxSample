@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BackendSample
+namespace Microsoft.Extensions.Logging
 {
     public class DiskLogProvider : ILoggerProvider
     {
@@ -61,6 +61,10 @@ namespace BackendSample
                 p.textWriter.WriteLine(
                     "[" + DateTime.Now.ToString() + "] [" + eventId + "] (" + categoryName + ") " + logLevel + " " + formatter?.Invoke(state, exception)
                     );
+                if (exception != null) {
+                    p.textWriter.WriteLine(exception.Message);
+                    p.textWriter.WriteLine(exception.StackTrace);
+                }
                 p.textWriter.Flush();
             }
         }

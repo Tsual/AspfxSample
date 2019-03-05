@@ -20,7 +20,7 @@ namespace IdentityServer
         {
             return new List<ApiResource>
             {
-                new ApiResource("api1", "My API")
+                new ApiResource("api_jwt_0", "api_jwt_0")
             };
         }
 
@@ -42,7 +42,7 @@ namespace IdentityServer
                     },
 
                     // scopes that client has access to
-                    AllowedScopes = { "api1" }
+                    AllowedScopes = { "api_jwt_0" }
                 }
             };
         }

@@ -15,7 +15,6 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using BackendSample.Core;
 
 namespace BackendSample
 {
@@ -70,40 +69,10 @@ namespace BackendSample
             services.AddAuthentication(arg =>
             {
                 arg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(arg =>
-            {
-
-                arg.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = JwtCore.SecretKey,
-
-                    ValidateIssuer = true,
-                    ValidIssuer = Configuration["jwt:Issuer"],
-
-                    ValidateAudience = true,
-                    //ValidAudience = JwtSetting.Audience,
-
-                    // Validate the token expiry
-                    ValidateLifetime = true,
-
-                    // If you want to allow a certain amount of clock drift, set that here:
-                    ClockSkew = TimeSpan.Zero,
-
-                    AudienceValidator = (aud, key, token) =>
-                   {
-                       bool res = true;
-                       foreach (var aud_t in aud)
-                           res &= JwtCore.Check(RedisCache.Instance[Configuration["redis:connect_string"]].GetDatabase(), aud_t);
-                       return res;
-                   },
-
-                    //IssuerValidator = (iss, key, token) =>
-                    //  {
-                    //      return "";
-                    //  },
-                };
-            });
+            })
+            //.AddLocalJwt(Configuration)
+            .AddIdentityServerJwt(Configuration)
+            ;
             /** Nuget:DotNetCore.CAP
                 这个包现在还没有足够完整
             services.AddCap(arg =>

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
-using BackendSample.Core;
 using BackendSample.Data;
 using BackendSample.Models;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
+using IdentityModel.Client;
 
 namespace BackendSample.Controllers
 {
@@ -31,7 +32,7 @@ namespace BackendSample.Controllers
         }
 
         [HttpPost("verify")]
-        public IActionResult Verify([FromBody] IdentityModel model)
+        public IActionResult Verify([FromBody] ModelIn model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -51,13 +52,13 @@ namespace BackendSample.Controllers
             if (query_list.Count < 1) return NotFound();
 
             if (query_list[0].Password == model.Password)
-                return Ok(new { Jwt = JwtCore.Regist(_connectionMultiplexer.GetDatabase(), query_list[0].ID.ToString(), _configuration["jwt:Issuer"], int.Parse(_configuration["jwt:Overtime"])) });
+                return Ok(new { Jwt = LocalJwt.Regist(_connectionMultiplexer.GetDatabase(), query_list[0].ID.ToString(), _configuration["jwt:Issuer"], int.Parse(_configuration["jwt:Overtime"])) });
 
             return BadRequest("User Not Found");
         }
 
         [HttpPost("regist")]
-        public async Task<IActionResult> RegistAsync([FromBody]IdentityModel model)
+        public async Task<IActionResult> RegistAsync([FromBody]ModelIn model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -85,19 +86,21 @@ namespace BackendSample.Controllers
             };
             _context.sUser.Attach(user);
             await _context.SaveChangesAsync();
-            return Ok(new { Jwt = JwtCore.Regist(_connectionMultiplexer.GetDatabase(), user.ID.ToString(), _configuration["jwt:Issuer"], int.Parse(_configuration["jwt:Overtime"])) });
+            return Ok(new { Jwt = LocalJwt.Regist(_connectionMultiplexer.GetDatabase(), user.ID.ToString(), _configuration["jwt:Issuer"], int.Parse(_configuration["jwt:Overtime"])) });
+        }
+
+        public class ModelIn
+        {
+            public string Password { get; set; }
+
+            public string Email { get; set; }
+
+            public string LoginId { get; set; }
+
+            public string PhoneNumber { get; set; }
         }
     }
 
-    public class IdentityModel
-    {
-        public string Password { get; set; }
 
-        public string Email { get; set; }
-
-        public string LoginId { get; set; }
-
-        public string PhoneNumber { get; set; }
-    }
 
 }

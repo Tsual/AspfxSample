@@ -14,6 +14,9 @@ using System.Text;
 using RabbitMQ.Client.Events;
 using System.Net;
 using System.Reflection;
+using System.Net.Http;
+using IdentityModel.Client;
+using Microsoft.Extensions.Configuration;
 
 namespace BackendSample.Controllers
 {
@@ -21,6 +24,7 @@ namespace BackendSample.Controllers
     [ApiController]
     public class DevController : ControllerBase
     {
+        private readonly IConfiguration configuration;
         private readonly ILogger<DevController> logger;
         private readonly IServiceHelper serviceHelper;
         private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
@@ -33,14 +37,17 @@ namespace BackendSample.Controllers
             Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
             IServer server,
             ObjectPoolProvider objectPoolProvider,
-            ConnectionFactory rabbitFactory)
+            IConfiguration configuration
+            //,ConnectionFactory rabbitFactory
+            )
         {
             this.logger = logger;
             this.serviceHelper = serviceHelper;
             this.hostingEnvironment = hostingEnvironment;
             this.server = server;
             this.objectPoolProvider = objectPoolProvider;
-            this.rabbitFactory = rabbitFactory;
+            this.configuration = configuration;
+            //this.rabbitFactory = rabbitFactory;
         }
         [HttpGet("logdi")]
         public IActionResult LogServices()
@@ -63,8 +70,8 @@ namespace BackendSample.Controllers
             foreach (var t in server.Features)
                 logger.LogDebug(t.ToString());
 
-            var appDomain=AppDomain.CurrentDomain.GetAssemblies();
-           
+            var appDomain = AppDomain.CurrentDomain.GetAssemblies();
+
 
             return new ContentResult() { Content = "ops" };
         }
@@ -90,7 +97,35 @@ namespace BackendSample.Controllers
             using (var channel = conn.CreateModel())
             {
                 var rec = channel.BasicGet("dev", true);
-                return Ok(rec!=null?Encoding.UTF8.GetString(rec.Body):"null");
+                return Ok(rec != null ? Encoding.UTF8.GetString(rec.Body) : "null");
+            }
+        }
+        [HttpGet("IdentityServer4Jwt")]
+        public async Task<IActionResult> ids4jwtAsync()
+        {
+            using (var httpClient = new HttpClient())
+            {
+                logger.LogTrace("IdentityServer4-Jwtoken-GetStart!");
+                var disco = await httpClient.GetDiscoveryDocumentAsync(configuration["identity_server_4:url"]);
+                if (disco.IsError)
+                {
+                    logger.LogError("IdentityServer4-Jwtoken-IdentityServerDown...");
+                    return BadRequest("IdentityServer Down");
+                }
+                var tokenResponse = await httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest()
+                {
+                    Address = disco.TokenEndpoint,
+                    ClientId = configuration["identity_server_4:client:id"],
+                    ClientSecret = configuration["identity_server_4:client:secret"],
+                    Scope = configuration["identity_server_4:jwt_api"]
+                });
+                if (tokenResponse.IsError)
+                {
+                    logger.LogError("IdentityServer4-Jwtoken-TokenRequestFail...");
+                    return BadRequest("TokenResponseError");
+                }
+                logger.LogTrace("IdentityServer4-Jwtoken-Get!<<{0}", tokenResponse.Json);
+                return Ok(tokenResponse.Json);
             }
         }
     }
