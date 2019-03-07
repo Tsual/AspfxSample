@@ -15,6 +15,8 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Consul;
+using Microsoft.AspNetCore.Hosting.Server.Features;
 
 namespace BackendSample
 {
@@ -96,11 +98,10 @@ namespace BackendSample
                 arg.UseMySql(Configuration["mysql:cap:connect_string"]);
             });
             **/
-            services.AddTransient(factory => AutoConsul.NewClient(Configuration));
             //静态扩展示例
             //非复杂情况下真的很臃肿
             services.AddRabbitMQ(arg => arg.HostName = Configuration["rabbitmq:HostName"]);
-            services.AddConsulCaller(Configuration);
+            services.AddConsulCaller(arg => arg.Address = new Uri(Configuration["consul:ServerUri"]), Enum.Parse<ConsulInvokePayload>(Configuration["consul:Payload"]));
 
             if (HostingEnvironment.IsDevelopment())
             {
@@ -118,11 +119,32 @@ namespace BackendSample
             }
 
             appLifetime.UseWarmup(Configuration)
-                .EnableConsul(Configuration,server);
-            
+                .EnableConsul(arg =>
+                {
+                    arg.Address = new Uri(Configuration["consul:ServerUri"]);
+                    if (Configuration["consul:DataCenter"] != null)
+                        arg.Datacenter = Configuration["consul:DataCenter"];
+                    if (Configuration["consul:Token"] != null)
+                        arg.Token = Configuration["consul:Token"];
+                }, new AgentServiceRegistration()
+                {
+                    Address = Configuration["consul:Regist:HostName"],
+                    ID = Configuration["consul:Regist:Name"] + "-" + Guid.NewGuid().ToString(),
+                    Port = int.Parse(Configuration["consul:Regist:Port"]),
+                    Tags = new string[] { "AutoConsul", Configuration["consul:Regist:Name"], "API" },
+                    Name = Configuration["consul:Regist:Name"],
+                    Check = new AgentServiceCheck()
+                    {
+                        HTTP = server.Features.Get<IServerAddressesFeature>().Addresses.ToArray()[0] + "/" + Configuration["consul:Regist:HealthCheck:Path"],
+                        DockerContainerID = Configuration["docker:Container:ID"] != null ? Configuration["docker:Container:ID"] : null,
+                        Interval = new TimeSpan(0, 0, int.Parse(Configuration["consul:Regist:HealthCheck:Interval"])),
+                        DeregisterCriticalServiceAfter = new TimeSpan(0, int.Parse(Configuration["consul:Regist:HealthCheck:Deregist"]), 0)
+                    }
+                });
+
             //static host isvp
             ServiceHelper.ServiceProvider = app.ApplicationServices;
-            
+
 
             app.UseResponseCaching();
             app.UseMvc();

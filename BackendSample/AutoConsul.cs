@@ -15,39 +15,16 @@ namespace BackendSample
 {
     internal class AutoConsul
     {
-        internal static string ConsulID { get; private set; }
+        internal static AgentServiceRegistration serviceRegistration { get; private set; }
 
-        internal static async Task RegistAsync(IConfiguration configuration, IServer server)
-            => await NewClient(configuration).Agent.ServiceRegister(new AgentServiceRegistration()
-            {
-                Address = configuration["consul:Regist:HostName"],
-                ID = ConsulID = configuration["consul:Regist:Name"] + "-" + Guid.NewGuid().ToString(),
-                Port = int.Parse(configuration["consul:Regist:Port"]),
-                Tags = new string[] { "AutoConsul", configuration["consul:Regist:Name"], "API" },
-                Name = configuration["consul:Regist:Name"],
-                Check = new AgentServiceCheck()
-                {
-                    HTTP = server.Features.Get<IServerAddressesFeature>().Addresses.ToArray()[0] + "/" + configuration["consul:Regist:HealthCheck:Path"],
-                    DockerContainerID = configuration["docker:Container:ID"] != null ? configuration["docker:Container:ID"] : null,
-                    Interval = new TimeSpan(0, 0, int.Parse(configuration["consul:Regist:HealthCheck:Interval"])),
-                    DeregisterCriticalServiceAfter = new TimeSpan(0, int.Parse(configuration["consul:Regist:HealthCheck:Deregist"]), 0)
-                }
-            });
+        internal static async Task RegistAsync(Action<ConsulClientConfiguration> configOverride, AgentServiceRegistration registration)
+        => await NewClient(configOverride).Agent.ServiceRegister(serviceRegistration = registration);
 
-        internal static async Task DeregistAsync(IConfiguration configuration)
-            => await NewClient(configuration).Agent.ServiceDeregister(ConsulID);
+        internal static async Task DeregistAsync(Action<ConsulClientConfiguration> configOverride)
+            => await NewClient(configOverride).Agent.ServiceDeregister(serviceRegistration.ID);
 
-        internal static ConsulClient NewClient(IConfiguration configuration)
-            => new ConsulClient(arg =>
-            {
-                arg.Address = new Uri(configuration["consul:ServerUri"]);
-                if (configuration["consul:DataCenter"] != null)
-                    arg.Datacenter = configuration["consul:DataCenter"];
-                if (configuration["consul:Token"] != null)
-                    arg.Token = configuration["consul:Token"];
-            });
-
-
+        internal static ConsulClient NewClient(Action<ConsulClientConfiguration> configOverride)
+            => new ConsulClient(configOverride);
     }
 
     public enum ConsulInvokePayload
@@ -74,10 +51,12 @@ namespace BackendSample
         private Action<ConsulClient> ServiceMapRefresh { get; }
         private Timer ServiceMapTimer;
         private Random ServiceMapRandom;
+        private Action<ConsulClientConfiguration> configOverride;
 
-        public ConsulCaller(IConfiguration configuration)
+        public ConsulCaller(Action<ConsulClientConfiguration> configOverride, ConsulInvokePayload InvokePayload)
         {
-            InvokePayload = Enum.Parse<ConsulInvokePayload>(configuration["consul:Payload"]);
+            this.InvokePayload = InvokePayload;
+            this.configOverride = configOverride;
             switch (InvokePayload)
             {
                 case ConsulInvokePayload.Direct:
@@ -99,7 +78,7 @@ namespace BackendSample
                         }
                         ServiceMap = rp;
                     };
-                    var client = AutoConsul.NewClient(configuration);
+                    var client = AutoConsul.NewClient(configOverride);
                     ServiceMapRefresh.Invoke(client);
                     ServiceMapTimer = new Timer(x =>
                     {
@@ -121,6 +100,8 @@ namespace BackendSample
         }
 
         public string GetUriHead(string ServiceName) => UriFunction.Invoke(ServiceName);
+
+        public ConsulClient NewClient() => AutoConsul.NewClient(configOverride);
     }
 
     public interface IConsulCaller
@@ -128,6 +109,7 @@ namespace BackendSample
         //Action<ConsulClient> ServiceMapRefresh { get; }
         ConsulInvokePayload InvokePayload { get; }
         string GetUriHead(string ServiceName);
+        ConsulClient NewClient();
     }
 }
 
@@ -135,22 +117,20 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class AutoConsulExtension
     {
-        public static IServiceCollection AddConsulCaller(this IServiceCollection services, IConfiguration configuration)
-        {
-            return services.AddSingleton(new ConsulCaller(configuration));
-        }
+        public static IServiceCollection AddConsulCaller(this IServiceCollection services, Action<ConsulClientConfiguration> configOverride, ConsulInvokePayload InvokePayload)
+            => services.AddSingleton(new ConsulCaller(configOverride, InvokePayload));
 
-        public static IApplicationLifetime EnableConsul(this IApplicationLifetime applicationLifetime,IConfiguration configuration,IServer server)
+        public static IApplicationLifetime EnableConsul(this IApplicationLifetime applicationLifetime, Action<ConsulClientConfiguration> configOverride, AgentServiceRegistration registration)
         {
             applicationLifetime.ApplicationStarted.Register(callback: async () =>
             {
-                await AutoConsul.RegistAsync(configuration, server);
+                await AutoConsul.RegistAsync(configOverride, registration);
             });
 
             applicationLifetime.ApplicationStopping.Register(callback: () =>
             {
                 //防止主线程过快退出而导致进程退出
-                AutoConsul.DeregistAsync(configuration).Wait();
+                AutoConsul.DeregistAsync(configOverride).Wait();
             });
 
             return applicationLifetime;
