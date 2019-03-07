@@ -10,3 +10,5 @@ rabbitmq-server start 做成服务还是命令行开都不错
 
 rabbitmq-plugins enable rabbitmq_management
 这个可以开ui 去安装目录下执行 windows默认不会加path
+
+有一个巨大的插件库 可以发现新世界
