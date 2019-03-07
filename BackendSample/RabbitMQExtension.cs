@@ -1,4 +1,5 @@
 ﻿using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,4 +16,23 @@ namespace Microsoft.Extensions.DependencyInjection
             return services.AddSingleton(conn_fac);
         }
     }
+    public class RabbitMQFulter
+    {
+        public static void consume(ConnectionFactory factory)
+        {
+            using (var conn = factory.CreateConnection())
+            using (var channel = conn.CreateModel())
+            {
+                Guid guid = Guid.NewGuid();
+
+                var consumer = new AsyncEventingBasicConsumer(channel);
+                consumer.Received += (sender, arg) =>
+                {
+                    
+                    return null;
+                };
+            }
+        }
+    }
+
 }

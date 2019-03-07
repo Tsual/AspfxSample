@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using BackendSample;
 
 namespace BackendSample
 {
@@ -60,6 +62,21 @@ namespace BackendSample
                        await redis.StringSetAsync(pair_key, db_pair.Value);
                });
 
+        }
+    }
+}
+
+namespace Microsoft.Extensions.DependencyInjection
+{
+    public static class WarmUpExtension
+    {
+        public static  IApplicationLifetime UseWarmup(this IApplicationLifetime applicationLifetime,IConfiguration configuration)
+        {
+            applicationLifetime.ApplicationStarted.Register(callback: () =>
+            {
+                WarmUp.DoWork(configuration);
+            });
+            return applicationLifetime;
         }
     }
 }

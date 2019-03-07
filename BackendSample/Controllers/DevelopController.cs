@@ -26,14 +26,12 @@ namespace BackendSample.Controllers
     {
         private readonly IConfiguration configuration;
         private readonly ILogger<DevController> logger;
-        private readonly IServiceHelper serviceHelper;
         private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
         private readonly IServer server;
         private readonly ObjectPoolProvider objectPoolProvider;
         private readonly ConnectionFactory rabbitFactory;
         public DevController(
             ILogger<DevController> logger,
-            IServiceHelper serviceHelper,
             Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment,
             IServer server,
             ObjectPoolProvider objectPoolProvider,
@@ -42,7 +40,6 @@ namespace BackendSample.Controllers
             )
         {
             this.logger = logger;
-            this.serviceHelper = serviceHelper;
             this.hostingEnvironment = hostingEnvironment;
             this.server = server;
             this.objectPoolProvider = objectPoolProvider;
@@ -52,7 +49,7 @@ namespace BackendSample.Controllers
         [HttpGet("logdi")]
         public IActionResult LogServices()
         {
-            logger.LogDebug(serviceHelper.DiInfoToJson());
+            logger.LogDebug(ServiceHelper.Instance.DiInfoToJson());
             return Ok();
         }
         [HttpGet("consul")]

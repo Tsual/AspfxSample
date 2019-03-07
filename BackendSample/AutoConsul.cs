@@ -9,6 +9,7 @@ using Consul;
 using Microsoft.AspNetCore.Hosting;
 using System.Threading;
 using BackendSample;
+using Microsoft.AspNetCore.Builder;
 
 namespace BackendSample
 {
@@ -70,7 +71,7 @@ namespace BackendSample
         public ConsulInvokePayload InvokePayload { get; }
         private Func<string, string> UriFunction;
         private Dictionary<string, List<AgentService>> ServiceMap;
-        public Action<ConsulClient> ServiceMapRefresh { get; }
+        private Action<ConsulClient> ServiceMapRefresh { get; }
         private Timer ServiceMapTimer;
         private Random ServiceMapRandom;
 
@@ -124,7 +125,7 @@ namespace BackendSample
 
     public interface IConsulCaller
     {
-        Action<ConsulClient> ServiceMapRefresh { get; }
+        //Action<ConsulClient> ServiceMapRefresh { get; }
         ConsulInvokePayload InvokePayload { get; }
         string GetUriHead(string ServiceName);
     }
@@ -137,6 +138,22 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddConsulCaller(this IServiceCollection services, IConfiguration configuration)
         {
             return services.AddSingleton(new ConsulCaller(configuration));
+        }
+
+        public static IApplicationLifetime EnableConsul(this IApplicationLifetime applicationLifetime,IConfiguration configuration,IServer server)
+        {
+            applicationLifetime.ApplicationStarted.Register(callback: async () =>
+            {
+                await AutoConsul.RegistAsync(configuration, server);
+            });
+
+            applicationLifetime.ApplicationStopping.Register(callback: () =>
+            {
+                //防止主线程过快退出而导致进程退出
+                AutoConsul.DeregistAsync(configuration).Wait();
+            });
+
+            return applicationLifetime;
         }
     }
 }

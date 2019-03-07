@@ -64,7 +64,6 @@ namespace BackendSample
             });
             services.AddResponseCaching();
             //可以写成静态扩展方法，这样更清楚点
-            services.AddSingleton<IServiceHelper>(ServiceHelper.Instance);
             services.AddSingleton(RedisCache.Instance[Configuration["redis:connect_string"]]);
             services.AddAuthentication(arg =>
             {
@@ -118,19 +117,12 @@ namespace BackendSample
                 app.UseDeveloperExceptionPage();
             }
 
-            appLifetime.ApplicationStarted.Register(callback: async () =>
-            {
-                WarmUp.DoWork(Configuration);
-                await AutoConsul.RegistAsync(Configuration, server);
-                new ConsulCaller(Configuration);
-            });
-
-            appLifetime.ApplicationStopping.Register(callback: () =>
-           {
-               //防止主线程过快退出而导致进程退出
-               AutoConsul.DeregistAsync(Configuration).Wait();
-           });
-
+            appLifetime.UseWarmup(Configuration)
+                .EnableConsul(Configuration,server);
+            
+            //static host isvp
+            ServiceHelper.ServiceProvider = app.ApplicationServices;
+            
 
             app.UseResponseCaching();
             app.UseMvc();
