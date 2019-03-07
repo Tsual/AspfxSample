@@ -17,6 +17,7 @@ using System.Reflection;
 using System.Net.Http;
 using IdentityModel.Client;
 using Microsoft.Extensions.Configuration;
+using System.Threading;
 
 namespace BackendSample.Controllers
 {
@@ -36,7 +37,7 @@ namespace BackendSample.Controllers
             IServer server,
             ObjectPoolProvider objectPoolProvider,
             IConfiguration configuration
-            //,ConnectionFactory rabbitFactory
+            , ConnectionFactory rabbitFactory
             )
         {
             this.logger = logger;
@@ -44,7 +45,7 @@ namespace BackendSample.Controllers
             this.server = server;
             this.objectPoolProvider = objectPoolProvider;
             this.configuration = configuration;
-            //this.rabbitFactory = rabbitFactory;
+            this.rabbitFactory = rabbitFactory;
         }
         [HttpGet("logdi")]
         public IActionResult LogServices()
@@ -72,31 +73,7 @@ namespace BackendSample.Controllers
 
             return new ContentResult() { Content = "ops" };
         }
-        [HttpPost("mqsend")]
-        public IActionResult rabbitsend(string msg)
-        {
-            using (var conn = rabbitFactory.CreateConnection())
-            using (var channel = conn.CreateModel())
-            {
-                channel.QueueDeclare(queue: "dev",
-                                    durable: false,
-                                    exclusive: false,
-                                    autoDelete: false,
-                                    arguments: null);
-                channel.BasicPublish("", "dev", null, Encoding.UTF8.GetBytes(msg));
-            }
-            return Ok();
-        }
-        [HttpGet("mqreceive")]
-        public IActionResult rabbitreceive()
-        {
-            using (var conn = rabbitFactory.CreateConnection())
-            using (var channel = conn.CreateModel())
-            {
-                var rec = channel.BasicGet("dev", true);
-                return Ok(rec != null ? Encoding.UTF8.GetString(rec.Body) : "null");
-            }
-        }
+
         [HttpGet("IdentityServer4Jwt")]
         public async Task<IActionResult> ids4jwtAsync()
         {
@@ -125,5 +102,6 @@ namespace BackendSample.Controllers
                 return Ok(tokenResponse.Json);
             }
         }
+
     }
 }
