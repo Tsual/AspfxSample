@@ -119,28 +119,28 @@ namespace BackendSample
             }
 
             appLifetime.UseWarmup(Configuration)
-                //.EnableConsul(arg =>
-                //{
-                //    arg.Address = new Uri(Configuration["consul:ServerUri"]);
-                //    if (Configuration["consul:DataCenter"] != null)
-                //        arg.Datacenter = Configuration["consul:DataCenter"];
-                //    if (Configuration["consul:Token"] != null)
-                //        arg.Token = Configuration["consul:Token"];
-                //}, new AgentServiceRegistration()
-                //{
-                //    Address = Configuration["consul:Regist:HostName"],
-                //    ID = Configuration["consul:Regist:Name"] + "-" + Guid.NewGuid().ToString(),
-                //    Port = int.Parse(Configuration["consul:Regist:Port"]),
-                //    Tags = new string[] { "AutoConsul", Configuration["consul:Regist:Name"], "API" },
-                //    Name = Configuration["consul:Regist:Name"],
-                //    Check = new AgentServiceCheck()
-                //    {
-                //        HTTP = server.Features.Get<IServerAddressesFeature>().Addresses.ToArray()[0] + "/" + Configuration["consul:Regist:HealthCheck:Path"],
-                //        DockerContainerID = Configuration["docker:Container:ID"] != null ? Configuration["docker:Container:ID"] : null,
-                //        Interval = new TimeSpan(0, 0, int.Parse(Configuration["consul:Regist:HealthCheck:Interval"])),
-                //        DeregisterCriticalServiceAfter = new TimeSpan(0, int.Parse(Configuration["consul:Regist:HealthCheck:Deregist"]), 0)
-                //    }
-                //})
+                .EnableConsul(arg =>
+                {
+                   arg.Address = new Uri(Configuration["consul:ServerUri"]);
+                   if (Configuration["consul:DataCenter"] != null)
+                       arg.Datacenter = Configuration["consul:DataCenter"];
+                   if (Configuration["consul:Token"] != null)
+                       arg.Token = Configuration["consul:Token"];
+                }, new AgentServiceRegistration()
+                {
+                   Address = Configuration["consul:Regist:HostName"],
+                   ID = Configuration["consul:Regist:Name"] + "-" + Guid.NewGuid().ToString(),
+                   Port = int.Parse(Configuration["consul:Regist:Port"]),
+                   Tags = new string[] { "AutoConsul", Configuration["consul:Regist:Name"], "API" },
+                   Name = Configuration["consul:Regist:Name"],
+                   Check = new AgentServiceCheck()
+                   {
+                       HTTP = server.Features.Get<IServerAddressesFeature>().Addresses.ToArray()[0] + "/" + Configuration["consul:Regist:HealthCheck:Path"],
+                       DockerContainerID = Configuration["docker:Container:ID"] != null ? Configuration["docker:Container:ID"] : null,
+                       Interval = new TimeSpan(0, 0, int.Parse(Configuration["consul:Regist:HealthCheck:Interval"])),
+                       DeregisterCriticalServiceAfter = new TimeSpan(0, int.Parse(Configuration["consul:Regist:HealthCheck:Deregist"]), 0)
+                   }
+                })
                 ;
 
             //static host isvp
