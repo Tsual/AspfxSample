@@ -1,5 +1,5 @@
 # AspfxSample
-技术样例工程
+技术样例工程 Aspcore+react
 
 数据库：SQLITE,MYSQL
 
@@ -11,12 +11,8 @@
 
 ORM:EFcore
 
-WEB框架：ASP.NETcore
+Server:Kestral (you can host in iis)
 
-容器:Kestral
-
-部署方案:1.Nginx+Ubuntu+bash
-
-        2.Docker+k8s(未验证)
+部署方案:1.Nginx+Ubuntu+bash 2.Docker+k8s(未验证)
 
 
