@@ -1,6 +1,7 @@
 ﻿using BackendSample.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BackendSample.Data
 {
-    public class SqliteContext:DbContext
+    public class SqliteContext : DbContext
     {
         private readonly IConfiguration _config;
         public SqliteContext(IConfiguration config)
@@ -22,7 +23,13 @@ namespace BackendSample.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(_config["sqlite:connect_string"]);
+            optionsBuilder.UseSqlite(_config["sqlite:connect_string"])
+                //客户端求值时引起警告
+                .ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning));
+
+
+
+            ;
         }
     }
 }
