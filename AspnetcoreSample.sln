@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedClasses", "SharedClas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontendSample", "FrontendSample\FrontendSample.csproj", "{1968A928-BAC9-4658-BD68-4E40BF2BD2AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitConsumer", "RabbitConsumer\RabbitConsumer.csproj", "{5831DF22-5795-4908-95EB-A9A4C7753375}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitConsumer", "RabbitConsumer\RabbitConsumer.csproj", "{5831DF22-5795-4908-95EB-A9A4C7753375}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

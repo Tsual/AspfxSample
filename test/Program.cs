@@ -8,19 +8,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace BackendSample
+namespace test
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            var builder=CreateWebHostBuilder(args).UseDefaultServiceProvider(cfg =>
-            {
-                cfg.ValidateScopes = false;
-            });
-            builder.Build();
-            builder.Start();
-
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

@@ -23,18 +23,22 @@ namespace BackendSample
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostingEnvironment env, ILogger<Startup> logger, Microsoft.AspNetCore.Hosting.Server.IServer server)
+        public Startup(IConfiguration configuration, IHostingEnvironment env, ILogger<Startup> logger, Microsoft.AspNetCore.Hosting.Server.IServer server
+            , IApplicationLifetime appLifetime
+            )
         {
             Configuration = configuration;
             HostingEnvironment = env;
             Logger = logger;
             this.server = server;
+            this.appLifetime = appLifetime;
         }
 
         public Microsoft.AspNetCore.Hosting.Server.IServer server { get; }
         public IConfiguration Configuration { get; }
         public IHostingEnvironment HostingEnvironment { get; }
         public ILogger<Startup> Logger { get; }
+        public IApplicationLifetime appLifetime { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         /* framework di service
@@ -113,18 +117,24 @@ namespace BackendSample
             services.AddRabbitMQ(arg => arg.HostName = Configuration["rabbitmq:HostName"]);
             services.AddConsulCaller(arg => arg.Address = new Uri(Configuration["consul:ServerUri"]), Enum.Parse<ConsulInvokePayload>(Configuration["consul:Payload"]));
 
+            //sdk2.2
+            services.AddHealthChecks();
+
+
+
             if (HostingEnvironment.IsDevelopment())
             {
                 ServiceHelper.Instance.Push(services);
                 //Logger.LogDebug("Final DI Container:" + ServiceHelper.Instance.DiInfoToJson());
             }
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IApplicationLifetime appLifetime)
+        public void Configure(IApplicationBuilder app)
         {
             ConfigPipeLine(app);
-            ConfigLifeTime(appLifetime);
+            ConfigLifeTime(app);
         }
 
         /*
@@ -153,6 +163,10 @@ namespace BackendSample
                 app.UseHsts();
             }
 
+            //sdk2.2
+            app.UseHealthChecks("/health");
+
+
             //管道分叉咯
             //app.Map(route0, app0);
             //app.Map(route1, app1);
@@ -178,9 +192,9 @@ namespace BackendSample
             
         }
 
-        private void ConfigLifeTime(IApplicationLifetime lifetime)
+        private void ConfigLifeTime(IApplicationBuilder app)
         {
-            lifetime.UseWarmup(Configuration)
+            app.ApplicationServices.GetService<IApplicationLifetime>().UseWarmup(Configuration)
                 .EnableConsul(arg =>
                 {
                     arg.Address = new Uri(Configuration["consul:ServerUri"]);

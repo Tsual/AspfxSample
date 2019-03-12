@@ -16,18 +16,18 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Identity": {
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true
+    },
+    "Backend(IdentityServer)": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://0.0.0.0:5000"
     },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true
-    },
-    "Backend(IdentityServer)": {
+    "sys.http": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
