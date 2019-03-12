@@ -18,12 +18,12 @@ namespace BackendSample.Controllers
     [ApiController]
     public class IdentityController : ControllerBase
     {
-        private readonly SqliteContext _context;
+        private readonly SqlitePooledContext _context;
         private readonly ILogger<IdentityController> _logger;
         private readonly IConnectionMultiplexer _connectionMultiplexer;
         private readonly IConfiguration _configuration;
 
-        public IdentityController(SqliteContext context, ILogger<IdentityController> logger, IConnectionMultiplexer connectionMultiplexer, IConfiguration configuration)
+        public IdentityController(SqlitePooledContext context, ILogger<IdentityController> logger, IConnectionMultiplexer connectionMultiplexer, IConfiguration configuration)
         {
             _context = context;
             _logger = logger;

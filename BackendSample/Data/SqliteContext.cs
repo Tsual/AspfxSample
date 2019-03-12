@@ -32,4 +32,14 @@ namespace BackendSample.Data
             ;
         }
     }
+
+    public class SqlitePooledContext : DbContext
+    {
+        public SqlitePooledContext(DbContextOptions<SqlitePooledContext> dbContextOptions) : base(dbContextOptions)
+        {
+        }
+
+        public DbSet<mUser> sUser { get; set; }
+        public DbSet<mValue> sValue { get; set; }
+    }
 }

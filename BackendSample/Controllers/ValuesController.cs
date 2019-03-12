@@ -21,11 +21,11 @@ namespace BackendSample.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ValuesController : ControllerBase
     {
-        private readonly SqliteContext _context;
+        private readonly SqlitePooledContext _context;
         private readonly ILogger<ValuesController> _logger;
         private readonly IConnectionMultiplexer _connectionMultiplexer;
 
-        public ValuesController(SqliteContext context, ILogger<ValuesController> logger, IConnectionMultiplexer connectionMultiplexer)
+        public ValuesController(SqlitePooledContext context, ILogger<ValuesController> logger, IConnectionMultiplexer connectionMultiplexer)
         {
             _context = context;
             _context.Database.EnsureCreated();

@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Consul;
 using Microsoft.AspNetCore.Hosting.Server.Features;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace BackendSample
 {
@@ -53,6 +54,16 @@ namespace BackendSample
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<SqliteContext>();
+            services.AddDbContextPool<SqlitePooledContext>(optionsBuilder =>
+            {
+                optionsBuilder.UseSqlite(Configuration["sqlite:connect_string"])
+                //客户端求值时引起警告
+                .ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning));
+
+
+
+                ;
+            });
             services.AddLogging(arg =>
             {
                 arg.AddConsole();
