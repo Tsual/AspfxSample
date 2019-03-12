@@ -23,13 +23,15 @@ namespace BackendSample
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostingEnvironment env, ILogger<Startup> logger)
+        public Startup(IConfiguration configuration, IHostingEnvironment env, ILogger<Startup> logger, Microsoft.AspNetCore.Hosting.Server.IServer server)
         {
             Configuration = configuration;
             HostingEnvironment = env;
             Logger = logger;
+            this.server = server;
         }
 
+        public Microsoft.AspNetCore.Hosting.Server.IServer server { get; }
         public IConfiguration Configuration { get; }
         public IHostingEnvironment HostingEnvironment { get; }
         public ILogger<Startup> Logger { get; }
@@ -59,11 +61,8 @@ namespace BackendSample
                 optionsBuilder.UseSqlite(Configuration["sqlite:connect_string"])
                 //客户端求值时引起警告
                 .ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning));
-
-
-
-                ;
             });
+            services.AddHttpClient();
             services.AddLogging(arg =>
             {
                 arg.AddConsole();
@@ -122,46 +121,52 @@ namespace BackendSample
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime appLifetime, Microsoft.AspNetCore.Hosting.Server.IServer server)
+        public void Configure(IApplicationBuilder app, IApplicationLifetime appLifetime)
         {
-            if (env.IsDevelopment())
+            ConfigPipeLine(app);
+            ConfigLifeTime(appLifetime);
+        }
+
+        private void ConfigPipeLine(IApplicationBuilder app)
+        {
+            ServiceHelper.ServiceProvider = app.ApplicationServices;
+
+            if (HostingEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            appLifetime.UseWarmup(Configuration)
-                .EnableConsul(arg =>
-                {
-                   arg.Address = new Uri(Configuration["consul:ServerUri"]);
-                   if (Configuration["consul:DataCenter"] != null)
-                       arg.Datacenter = Configuration["consul:DataCenter"];
-                   if (Configuration["consul:Token"] != null)
-                       arg.Token = Configuration["consul:Token"];
-                }, new AgentServiceRegistration()
-                {
-                   Address = Configuration["consul:Regist:HostName"],
-                   ID = Configuration["consul:Regist:Name"] + "-" + Guid.NewGuid().ToString(),
-                   Port = int.Parse(Configuration["consul:Regist:Port"]),
-                   Tags = new string[] { "AutoConsul", Configuration["consul:Regist:Name"], "API" },
-                   Name = Configuration["consul:Regist:Name"],
-                   Check = new AgentServiceCheck()
-                   {
-                       HTTP = server.Features.Get<IServerAddressesFeature>().Addresses.ToArray()[0] + "/" + Configuration["consul:Regist:HealthCheck:Path"],
-                       DockerContainerID = Configuration["docker:Container:ID"] != null ? Configuration["docker:Container:ID"] : null,
-                       Interval = new TimeSpan(0, 0, int.Parse(Configuration["consul:Regist:HealthCheck:Interval"])),
-                       DeregisterCriticalServiceAfter = new TimeSpan(0, int.Parse(Configuration["consul:Regist:HealthCheck:Deregist"]), 0)
-                   }
-                })
-                ;
-
-            //static host isvp
-            ServiceHelper.ServiceProvider = app.ApplicationServices;
-
 
             app.UseResponseCaching();
             app.UseMvc();
         }
 
+        private void ConfigLifeTime(IApplicationLifetime lifetime)
+        {
+            lifetime.UseWarmup(Configuration)
+                .EnableConsul(arg =>
+                {
+                    arg.Address = new Uri(Configuration["consul:ServerUri"]);
+                    if (Configuration["consul:DataCenter"] != null)
+                        arg.Datacenter = Configuration["consul:DataCenter"];
+                    if (Configuration["consul:Token"] != null)
+                        arg.Token = Configuration["consul:Token"];
+                }, new AgentServiceRegistration()
+                {
+                    Address = Configuration["consul:Regist:HostName"],
+                    ID = Configuration["consul:Regist:Name"] + "-" + Guid.NewGuid().ToString(),
+                    Port = int.Parse(Configuration["consul:Regist:Port"]),
+                    Tags = new string[] { "AutoConsul", Configuration["consul:Regist:Name"], "API" },
+                    Name = Configuration["consul:Regist:Name"],
+                    Check = new AgentServiceCheck()
+                    {
+                        HTTP = server.Features.Get<IServerAddressesFeature>().Addresses.ToArray()[0] + "/" + Configuration["consul:Regist:HealthCheck:Path"],
+                        DockerContainerID = Configuration["docker:Container:ID"] != null ? Configuration["docker:Container:ID"] : null,
+                        Interval = new TimeSpan(0, 0, int.Parse(Configuration["consul:Regist:HealthCheck:Interval"])),
+                        DeregisterCriticalServiceAfter = new TimeSpan(0, int.Parse(Configuration["consul:Regist:HealthCheck:Deregist"]), 0)
+                    }
+                })
+                ;
+        }
 
     }
 }
