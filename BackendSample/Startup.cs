@@ -127,17 +127,55 @@ namespace BackendSample
             ConfigLifeTime(appLifetime);
         }
 
+        /*
+         * 内置中间件:https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/index?view=aspnetcore-2.2#built-in-middleware
+        */
         private void ConfigPipeLine(IApplicationBuilder app)
         {
             ServiceHelper.ServiceProvider = app.ApplicationServices;
 
             if (HostingEnvironment.IsDevelopment())
             {
+                // When the app runs in the Development environment:
+                //   Use the Developer Exception Page to report app runtime errors.
+                //   Use the Database Error Page to report database runtime errors.
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+            }
+            else
+            {
+                // When the app doesn't run in the Development environment:
+                //   Enable the Exception Handler Middleware to catch exceptions
+                //     thrown in the following middlewares.
+                //   Use the HTTP Strict Transport Security Protocol (HSTS)
+                //     Middleware.
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
             }
 
+            //管道分叉咯
+            //app.Map(route0, app0);
+            //app.Map(route1, app1);
+
+            // 如果配置了https，不过建议配在nginx上，集群内部用http就好
+            // Use HTTPS Redirection Middleware to redirect HTTP requests to HTTPS.
+            //app.UseHttpsRedirection();
+
+            // Return static files and end the pipeline.
+            app.UseStaticFiles();
+
+            // Use Cookie Policy Middleware to conform to EU General Data 
+            // Protection Regulation (GDPR) regulations.
+            app.UseCookiePolicy();
+
+            // 如果是razor或者mvc应用，开会话和身份验证
+            //app.UseAuthentication();
+            //app.UseSession();
+
+            //对health和error进行缓存
             app.UseResponseCaching();
             app.UseMvc();
+            
         }
 
         private void ConfigLifeTime(IApplicationLifetime lifetime)
