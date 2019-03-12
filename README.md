@@ -16,3 +16,8 @@ Server:Kestral (you can host in iis)
 部署方案:1.Nginx+Ubuntu+bash 2.Docker+k8s(未验证,用起来真爽)
 
 
+Features:
+
+开发模式本地日志,log4n格式,注入在ILogger内
+
+
